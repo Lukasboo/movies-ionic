@@ -1,14 +1,22 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      Gêneros
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding="20px">
+  <ion-card-header>
+    Escolha o tipo de filme!
+  </ion-card-header>
+  
+<ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)">
+    <ion-list>
+      <button ion-item color="primary">
+        <ion-icon name="arrow-forward" item-start></ion-icon>
+        {{ movies.name }}
+      </button>
+    </ion-list>
+  </ion-card>
 </ion-content>
