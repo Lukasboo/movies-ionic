@@ -19,8 +19,10 @@ import { Storage } from '@ionic/storage';
   ]
 })
 export class MoviedetailPage {
+  toastCtrl: any;
 
   parameter1: number;
+  movieid: string;
   public movie = new Array<any>();
 
   constructor(
@@ -32,12 +34,13 @@ export class MoviedetailPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MoviedetailPage');
+    // console.log('ionViewDidLoad MoviedetailPage');
     this.parameter1 = this.navParams.get('param1'); 
-    console.log(this.parameter1);
+    // console.log(this.parameter1);
     this.moviesProvider.getMoviesById(this.parameter1).subscribe(
       (data) => {
         this.movie = data.json();
+        
         console.log(this.movie);
       }, error => {
         console.log("ERROOOOOO");
@@ -46,18 +49,17 @@ export class MoviedetailPage {
   }
 
   async saveFavoriteMovie(){
-    /*let usuarios = await this.storage.get('usuarios') as any[];
-    if (!usuarios) {
-      usuarios = [];
-    }*/
-    usuarios.push({
-      name: this.inputName,
-      age: this.inputAge,
-      email: this.inputEmail,
-      password: this.inputPassword
+    // console.log(this.movie.id)
+    let favoritemovie = await this.storage.get('favoritemovie') as any[];
+    if (!favoritemovie) {
+      favoritemovie = [];
+    }
+    favoritemovie.push({
+      //email: this.movie.emaild,
+      // movieid: this.movie.id;
     });
-    this.storage.set('usuarios', usuarios);
-    console.log(usuarios);
+    this.storage.set('movies', favoritemovie);
+    // console.log(favoritemovie);
     this.sucessToast();
   }  
 
