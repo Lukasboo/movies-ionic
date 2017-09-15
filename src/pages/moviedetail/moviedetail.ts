@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
@@ -19,10 +19,12 @@ import { LoginProvider } from '../../providers/login/login';
 })
 export class MoviedetailPage {
   
+  fabfavorite: any;
   parameter1: number;
   movieid: string;
   userEmail: string;
   public movie = new Array<any>();
+  myBtnColor = "primary";
 
   constructor(
     public navCtrl: NavController, 
@@ -30,11 +32,13 @@ export class MoviedetailPage {
     private moviesProvider: MoviesProvider,
     private storage: Storage,
     private loginProvider: LoginProvider,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private changeDetectorRef:ChangeDetectorRef
   ) {
   }
 
   ionViewDidLoad() {
+    
     this.parameter1 = this.navParams.get('param1'); 
     this.moviesProvider.getMoviesById(this.parameter1).subscribe(
       (data) => {
@@ -49,17 +53,11 @@ export class MoviedetailPage {
   }
 
   async saveFavoriteMovie(movie){
-
+    this.myBtnColor = "danger";
+    this.changeDetectorRef.detectChanges();
     let favoritemovies = await this.storage.get('favoritemovies') as any[];
     if (favoritemovies) {
-      
       const resultado = favoritemovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
-
-      console.log(resultado);
-      console.log(movie.id);
-      console.log(this.userEmail);
-
-
       if (resultado) {
         favoritemovies = [];
         this.failToast();
@@ -67,6 +65,9 @@ export class MoviedetailPage {
         favoritemovies.push({
           email: this.userEmail,
           movieid: movie.id,
+          movietitle: movie.title,
+          movieoverview: movie.overview,
+          movieposter_path: movie.poster_path
         });
         this.storage.set('favoritemovies', favoritemovies);
         console.log(favoritemovies);
@@ -75,12 +76,12 @@ export class MoviedetailPage {
     } else {
       favoritemovies.push({
         email: this.userEmail,
-        movieid: movie.id
+        movieid: movie.id,
+        movietitle: movie.title,
+        movieoverview: movie.overview,
+        movieposter_path: movie.poster_path
       });
     }
-
-   
-
   }  
 
   sucessToast() {
