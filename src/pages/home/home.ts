@@ -19,6 +19,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    //this.navCtrl.setRoot(HomePage);
     this.moviesProvider.getGenresMovies().subscribe(
       (data) => {
         const { genres } = data.json();

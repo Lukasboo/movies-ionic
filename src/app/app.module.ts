@@ -13,6 +13,7 @@ import { MoviesPage } from '../pages/movies/movies';
 import { MoviedetailPage } from '../pages/moviedetail/moviedetail';
 import { HttpModule } from '@angular/http';
 import { LoginProvider } from '../providers/login/login';
+import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LoginProvider } from '../providers/login/login';
     LoginPage,
     RegisterPage,
     MoviesPage,
-    MoviedetailPage
+    MoviedetailPage,
+    FavoriteMoviesPage
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,8 @@ import { LoginProvider } from '../providers/login/login';
     LoginPage,
     RegisterPage,
     MoviesPage,
-    MoviedetailPage
+    MoviedetailPage,
+    FavoriteMoviesPage
   ],
   providers: [
     StatusBar,

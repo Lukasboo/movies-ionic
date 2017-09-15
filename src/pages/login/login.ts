@@ -38,7 +38,8 @@ export class LoginPage {
   }
 
   goToHomePage() {
-    this.navCtrl.push(HomePage);
+    //this.navCtrl.push(HomePage);
+    this.navCtrl.setRoot(HomePage);
   }
 
   async login() {

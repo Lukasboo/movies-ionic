@@ -19,18 +19,18 @@ export class MoviesProvider {
   }
   
   getGenresMovies(){
-    return this.http.get(this.baseApiPath + "/genre/movie/list?api_key=&language=pt-BR");
+    return this.http.get(this.baseApiPath + "/genre/movie/list?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
   }
 
   getLatestMovies(){
-    return this.http.get(this.baseApiPath + "/movie/popular?api_key=&language=pt-BR");
+    return this.http.get(this.baseApiPath + "/movie/popular?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
   }
 
   getMoviesByGenre(idGenre: number){
-    return this.http.get(this.baseApiPath + "/genre/" + idGenre + "/movies?api_key=&language=pt-BR")
+    return this.http.get(this.baseApiPath + "/genre/" + idGenre + "/movies?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR")
   }
 
   getMoviesById(idMovie: number){
-    return this.http.get(this.baseApiPath + "/movie/" + idMovie + "?api_key=&language=pt-BR")
+    return this.http.get(this.baseApiPath + "/movie/" + idMovie + "?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR")
   }
 }

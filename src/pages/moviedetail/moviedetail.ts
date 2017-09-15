@@ -49,22 +49,38 @@ export class MoviedetailPage {
   }
 
   async saveFavoriteMovie(movie){
-    // console.log(this.movie.id)
-    let favoritemovie = await this.storage.get('favoritemovie') as any[];
-    const resultado = favoritemovie.some((favorite) => favorite.email == movie.id && favorite.movieid == this.userEmail);
-    if (!resultado) {
-      favoritemovie = [];
-      this.failToast();
+
+    let favoritemovies = await this.storage.get('favoritemovies') as any[];
+    if (favoritemovies) {
+      
+      const resultado = favoritemovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
+
+      console.log(resultado);
+      console.log(movie.id);
+      console.log(this.userEmail);
+
+
+      if (resultado) {
+        favoritemovies = [];
+        this.failToast();
+      } else {
+        favoritemovies.push({
+          email: this.userEmail,
+          movieid: movie.id,
+        });
+        this.storage.set('favoritemovies', favoritemovies);
+        console.log(favoritemovies);
+        this.sucessToast();
+      }  
     } else {
-      favoritemovie.push({
+      favoritemovies.push({
         email: this.userEmail,
         movieid: movie.id
       });
-      this.storage.set('favoritemovie', favoritemovie);
-      console.log("MOSTRANDO  favorite");
-      console.log(favoritemovie);
-      this.sucessToast();
-    }   
+    }
+
+   
+
   }  
 
   sucessToast() {
