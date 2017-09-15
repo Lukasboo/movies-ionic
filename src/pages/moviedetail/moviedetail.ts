@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
 import { Storage } from '@ionic/storage';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the MoviedetailPage page.
@@ -13,64 +15,74 @@ import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-moviedetail',
-  templateUrl: 'moviedetail.html',
-  providers: [
-    MoviesProvider
-  ]
+  templateUrl: 'moviedetail.html'
 })
 export class MoviedetailPage {
-  toastCtrl: any;
-
+  
   parameter1: number;
   movieid: string;
+  userEmail: string;
   public movie = new Array<any>();
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private moviesProvider: MoviesProvider,
-    private storage: Storage
+    private storage: Storage,
+    private loginProvider: LoginProvider,
+    private toastCtrl: ToastController
   ) {
   }
 
   ionViewDidLoad() {
-    // console.log('ionViewDidLoad MoviedetailPage');
     this.parameter1 = this.navParams.get('param1'); 
-    // console.log(this.parameter1);
     this.moviesProvider.getMoviesById(this.parameter1).subscribe(
       (data) => {
         this.movie = data.json();
-        
+        console.log(this.loginProvider.getUserMail());
         console.log(this.movie);
       }, error => {
-        console.log("ERROOOOOO");
+        console.log("Erro detail");
       }
     )
+    this.userEmail = this.loginProvider.getUserMail();
   }
 
-  async saveFavoriteMovie(){
+  async saveFavoriteMovie(movie){
     // console.log(this.movie.id)
     let favoritemovie = await this.storage.get('favoritemovie') as any[];
-    if (!favoritemovie) {
+    const resultado = favoritemovie.some((favorite) => favorite.email == movie.id && favorite.movieid == this.userEmail);
+    if (!resultado) {
       favoritemovie = [];
-    }
-    favoritemovie.push({
-      //email: this.movie.emaild,
-      // movieid: this.movie.id;
-    });
-    this.storage.set('movies', favoritemovie);
-    // console.log(favoritemovie);
-    this.sucessToast();
+      this.failToast();
+    } else {
+      favoritemovie.push({
+        email: this.userEmail,
+        movieid: movie.id
+      });
+      this.storage.set('favoritemovie', favoritemovie);
+      console.log("MOSTRANDO  favorite");
+      console.log(favoritemovie);
+      this.sucessToast();
+    }   
   }  
 
   sucessToast() {
     let toast = this.toastCtrl.create({
-      message: 'Usuário adicionado com sucesso!',
+      message: 'Filme adicionado aos favoritos com sucesso!',
       duration: 3000,
       position: 'top'
     });
     toast.present();
   }
   
+  failToast() {
+    let toast = this.toastCtrl.create({
+      message: 'Este filme já está adicionado nos seus Favoritos!',
+      duration: 3000,
+      position: 'top'
+    });
+    toast.present();
+  }
 
 }

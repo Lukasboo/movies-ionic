@@ -11,17 +11,14 @@ import { MoviesPage } from '../movies/movies';
   ]
 })
 export class HomePage {
-
   public movies_list = new Array<any>();
-
   constructor(
     public navCtrl: NavController,
-    private moviesProvider: MoviesProvider,
+    private moviesProvider: MoviesProvider
   ) {
   }
 
   ionViewDidLoad() {
-    
     this.moviesProvider.getGenresMovies().subscribe(
       (data) => {
         const { genres } = data.json();

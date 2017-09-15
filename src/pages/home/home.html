@@ -4,16 +4,18 @@
       Gêneros
     </ion-title>
   </ion-navbar>
+  
 </ion-header>
+
 
 <ion-content padding="20px">
   <ion-card-header>
     Escolha o tipo de filme!
   </ion-card-header>
   
-<ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)">
+  <ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)">
     <ion-list>
-      <button ion-item color="primary">
+      <button ion-item color="secondary">
         <ion-icon name="arrow-forward" item-start></ion-icon>
         {{ movies.name }}
       </button>

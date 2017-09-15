@@ -12,6 +12,7 @@ import { MoviesProvider } from '../providers/movies/movies';
 import { MoviesPage } from '../pages/movies/movies';
 import { MoviedetailPage } from '../pages/moviedetail/moviedetail';
 import { HttpModule } from '@angular/http';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    MoviesProvider
+    MoviesProvider,
+    LoginProvider
   ]
 })
 export class AppModule {}

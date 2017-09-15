@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angu
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the LoginPage page.
@@ -14,7 +15,7 @@ import { Storage } from '@ionic/storage';
 @IonicPage()
 @Component({
   selector: 'page-login',
-  templateUrl: 'login.html',
+  templateUrl: 'login.html'
 })
 export class LoginPage {
 
@@ -23,17 +24,13 @@ export class LoginPage {
   inputEmail: string;
   inputPassword: string;
 
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private loginProvider: LoginProvider
   ) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
   }
 
   OpenRegisterPage() {
@@ -47,18 +44,16 @@ export class LoginPage {
   async login() {
     console.log("logando");
     const usuarios = await this.storage.get('usuarios') as any[];
-    //const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
+    const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
     console.log(usuarios);
-    //if (resultado) {
+    if (resultado) {
+      this.loginProvider.setUserMail(this.inputEmail);
+      console.log("setando useremail no provider = " + this.loginProvider.getUserMail());
       this.goToHomePage();
-    //} else {
-      //this.userToast();
-      //console.log("Usuario nao existe");
-    //}
-    //if (this.inputUsername == this.username && this.inputPassword == this.password) {
-    /*} else {
-      this.userToast()
-    }*/
+    } else {
+      this.userToast();
+      console.log("Usuario nao existe");
+    }
   }
 
   userToast() {

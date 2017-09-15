@@ -16,22 +16,16 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
-
   inputName: string;
   inputAge: number;
   inputEmail: string;
   inputPassword: string;
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
     private toastCtrl: ToastController
   ) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
   }
 
   async save() {

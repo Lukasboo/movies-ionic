@@ -12,10 +12,7 @@ import { MoviedetailPage } from '../moviedetail/moviedetail';
 @IonicPage()
 @Component({
   selector: 'page-movies',
-  templateUrl: 'movies.html',
-  providers: [
-    MoviesProvider
-  ]
+  templateUrl: 'movies.html'
 })
 export class MoviesPage {
 
@@ -26,23 +23,18 @@ export class MoviesPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private moviesProvider: MoviesProvider,
+    private moviesProvider: MoviesProvider
   ) {
   }
 
   ionViewDidLoad() {
     this.parameter1 = this.navParams.get('param1'); 
-    console.log(this.parameter1);
-    console.log('ionViewDidLoad MoviesPage');
     this.moviesProvider.getMoviesByGenre(this.parameter1).subscribe(
       (data) => {
         const { results } = data.json();
-        
         this.movies_list = results;
-        console.log(data.json());
-        console.log(results);
       }, error => {
-        console.log("ERROOOOOO");
+        console.log("Erro movie.ts");
       }
     )
   }
