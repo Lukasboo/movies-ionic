@@ -25,6 +25,7 @@ export class MoviedetailPage {
   userEmail: string;
   public movie = new Array<any>();
   myBtnColor = "primary";
+  status: boolean = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -50,6 +51,14 @@ export class MoviedetailPage {
       }
     )
     this.userEmail = this.loginProvider.getUserMail();
+
+    /*this.myBtnColor = "danger";
+    this.changeDetectorRef.detectChanges();
+    let favoritedmovies = await this.storage.get('favoritemovies') as any[];
+    if (favoritedmovies) {
+      
+    }*/
+
   }
 
   async saveFavoriteMovie(movie){
@@ -83,6 +92,20 @@ export class MoviedetailPage {
       });
     }
   }  
+
+  async isFavorite(movie){
+    let favoritemovies = await this.storage.get('favoritemovies') as any[];
+    if (favoritemovies) {
+      const resultado = favoritemovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
+      if (resultado) {
+        this.status = true;
+        return true;
+      } else {
+        this.status = false;
+        return false;  
+      }
+    }  
+  }
 
   sucessToast() {
     let toast = this.toastCtrl.create({
