@@ -14,7 +14,7 @@ export class LoginProvider {
 public userMail: string;
 
   constructor(public http: Http) {
-    console.log('Hello LoginProvider Provider');
+    console.log('Constructor Hello LoginProvider Provider');
   }
 
   setUserMail(email) {

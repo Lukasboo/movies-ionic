@@ -50,6 +50,7 @@ export class LoginPage {
     if (resultado) {
       this.loginProvider.setUserMail(this.inputEmail);
       console.log("setando useremail no provider = " + this.loginProvider.getUserMail());
+      console.log("indo para home page");
       this.goToHomePage();
     } else {
       this.userToast();

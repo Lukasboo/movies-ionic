@@ -15,7 +15,7 @@ export class MoviesProvider {
   imageBaseApiPath = "https://image.tmdb.org/t/p/w500/";
 
   constructor(public http: Http) {
-    console.log('Hello MoviesProvider Provider');
+    console.log('Constructor Hello MoviesProvider Provider');
   }
   
   getGenresMovies(){

@@ -5,10 +5,7 @@ import { MoviesPage } from '../movies/movies';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
-  providers: [
-    MoviesProvider
-  ]
+  templateUrl: 'home.html'
 })
 export class HomePage {
   public movies_list = new Array<any>();
