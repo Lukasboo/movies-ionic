@@ -15,7 +15,7 @@
               <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor"><ion-icon name="star"></ion-icon></button>
           </ion-fab>    -->
           <ion-fab middle right edge >
-            <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" ><ion-icon name="star"></ion-icon></button>
+            <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" [disabled]="disabled"><ion-icon name="star"></ion-icon></button>
             <!--<button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" ng-hide="isFavorite(movie) == 'false'"><ion-icon name="star"></ion-icon></button>-->
           </ion-fab>
       </ion-row>

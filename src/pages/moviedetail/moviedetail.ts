@@ -25,7 +25,9 @@ export class MoviedetailPage {
   userEmail: string;
   public movie = new Array<any>();
   myBtnColor = "primary";
+  isFavorited: any;
   status: boolean = false;
+  disabled: boolean;
 
   constructor(
     public navCtrl: NavController, 
@@ -44,75 +46,31 @@ export class MoviedetailPage {
     this.moviesProvider.getMoviesById(this.parameter1).subscribe(
       (data) => {
         this.movie = data.json();
-        //console.log("antes de changefab");
-        //console.log(this.movie);
         this.changeFabColor(this.movie);
-        /*console.log(this.loginProvider.getUserMail());
-        console.log("apos data json");
-        console.log(this.movie);*/
       }, error => {
         console.log("Erro detail");
       }
     )
     this.userEmail = this.loginProvider.getUserMail();
-    //console.log("email global");
-    //console.log(this.userEmail);
-    //this.myBtnColor = "danger";
-    //this.changeDetectorRef.detectChanges();
-    
-      //let favoritedmovies = await this.storage.get('favoritemovies') as any[];
-      /*if (favoritedmovies) {
-        console.log();
-        this.myBtnColor = "danger";
-        this.changeDetectorRef.detectChanges();
-      } else {
-        this.myBtnColor = "primary";
-        this.changeDetectorRef.detectChanges();
-      }*/
-      /*console.log("antes de change fab");
-      console.log(this.movie);
-      this.changeFabColor(this.movie);*/
-
   }
 
   async changeFabColor(movie) {
-    console.log("movie");
-    console.log(movie);
-    console.log("movieid");
-    console.log(this.movieid);
     let favoritedmovies = await this.storage.get('favoritemovies') as any[];
-    console.log("favoritedmovies");
-    console.log(favoritedmovies);
     if (favoritedmovies) {
-      const resultado = favoritedmovies.some(
-        (favorite) => favorite.movieid == movie.id && 
-        favorite.email == this.userEmail
-      );
-      /*console.log("movieid");
-      console.log(movie.id);
-      console.log("userEmail");
-      console.log(this.userEmail);
-      console.log("resultado");
-      console.log(resultado);*/
+      const resultado = favoritedmovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
       if (resultado) {
-        console.log("primary color");
+        this.disabled = true;
         this.myBtnColor = "danger";
         this.changeDetectorRef.detectChanges();
       } else {
-        console.log("danger color");
+        this.disabled = false;
         this.myBtnColor = "primary";
         this.changeDetectorRef.detectChanges();
       }
     }  
-
   }
 
   async saveFavoriteMovie(movie){
-    /*console.log(this.userEmail);
-    console.log(movie.id);
-    console.log(movie.title);
-    console.log(movie.overview);
-    console.log(movie.poster_path);*/
     this.myBtnColor = "danger";
     this.changeDetectorRef.detectChanges();
     let favoritemovies = await this.storage.get('favoritemovies') as any[];
@@ -136,13 +94,6 @@ export class MoviedetailPage {
       }  
     } else {
       favoritemovies = [];
-      /*console.log(favoritemovies);
-      console.log("informações filme e email usuario");
-      console.log(this.userEmail);
-      console.log(movie.id);
-      console.log(movie.title);
-      console.log(movie.overview);
-      console.log(movie.poster_path);*/
       favoritemovies.push({
         email: this.userEmail,
         movieid: movie.id,
@@ -154,7 +105,6 @@ export class MoviedetailPage {
       console.log(favoritemovies);
       this.failToast();
     }
-    
   }  
 
   async isFavorite(movie){
@@ -162,9 +112,11 @@ export class MoviedetailPage {
     if (favoritemovies) {
       const resultado = favoritemovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
       if (resultado) {
+        this.isFavorited = true;
         this.status = true;
         return true;
       } else {
+        this.isFavorited = false;
         this.status = false;
         return false;  
       }
@@ -188,5 +140,4 @@ export class MoviedetailPage {
     });
     toast.present();
   }
-
 }

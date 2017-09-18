@@ -21,14 +21,21 @@
     Filmes Favoritos   
   </ion-card-header>
   
-<ion-card *ngFor="let favoritemovies of favoritemovies_list" (click)="onSelect(movies)">
-    <ion-list>
+  <ion-card *ngFor="let favoritemovies of movies_list">
+      <ion-list>
+        <ion-title text-center>
+            <h2>{{ favoritemovies.movietitle }}</h2>
+        </ion-title> 
+      </ion-list>
       <ion-title text-center>
-          <h2 class="movietitle">{{ movies.title }}</h2>
-      </ion-title> 
-    </ion-list>
-    <ion-title text-center>
-      <ion-img width="350" height="350" src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}"></ion-img>
-    </ion-title>
-  </ion-card>
+        <ion-img width="350" height="350" src="https://image.tmdb.org/t/p/w500{{ favoritemovies.movieposter_path }}"></ion-img>
+      </ion-title>
+      <ion-row>
+        <ion-col>
+          <ion-note text-center class="note">
+            {{ favoritemovies.movieoverview }}
+          </ion-note>
+        </ion-col>
+      </ion-row> 
+    </ion-card>
 </ion-content>
