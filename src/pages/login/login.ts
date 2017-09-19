@@ -43,6 +43,7 @@ export class LoginPage {
   }
 
   logout() {
+    
     this.loginProvider.setUserMail("");
     this.navCtrl.setRoot(LoginPage);
   }
