@@ -18,12 +18,10 @@ import { LoginProvider } from '../../providers/login/login';
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
   public email: string;
   public password: string;
   inputEmail: string;
   inputPassword: string;
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -38,23 +36,26 @@ export class LoginPage {
   }
 
   goToHomePage() {
-    //this.navCtrl.push(HomePage);
     this.navCtrl.setRoot(HomePage);
   }
 
   logout() {
-    
+    //window.location.reload;
     this.loginProvider.setUserMail("");
     this.navCtrl.setRoot(LoginPage);
   }
 
   async login() {
     const usuarios = await this.storage.get('usuarios') as any[];
-    const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
-    console.log(usuarios);
-    if (resultado) {
-      this.loginProvider.setUserMail(this.inputEmail);
-      this.goToHomePage();
+    if(usuarios) {
+      const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
+      console.log(usuarios);
+      if (resultado) {
+        this.loginProvider.setUserMail(this.inputEmail);
+        this.goToHomePage();
+      } else {
+        this.userToast();
+      }
     } else {
       this.userToast();
     }

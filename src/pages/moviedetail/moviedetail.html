@@ -6,22 +6,18 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <ion-grid>
       <ion-row>
         <ion-title>Filme</ion-title>
-          <!--<ion-icon name="star-outline" class="customicon" item-end></ion-icon>-->
-          <!--<ion-fab middle right edge>
-              <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor"><ion-icon name="star"></ion-icon></button>
-          </ion-fab>    -->
           <ion-fab middle right edge >
-            <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" [disabled]="disabled"><ion-icon name="star"></ion-icon></button>
-            <!--<button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" ng-hide="isFavorite(movie) == 'false'"><ion-icon name="star"></ion-icon></button>-->
+            <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" [disabled]="disabled">
+              <ion-icon name="star"></ion-icon>
+            </button>
           </ion-fab>
       </ion-row>
     </ion-grid>    
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
