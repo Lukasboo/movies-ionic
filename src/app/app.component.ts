@@ -21,7 +21,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Gêneros', component: HomePage },
-      { title: 'Favoritos', component: FavoriteMoviesPage }
+      { title: 'Favoritos', component: FavoriteMoviesPage },
+      { title: 'Sair', component: LoginPage }
     ];
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.

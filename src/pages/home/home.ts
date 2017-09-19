@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
 import { MoviesPage } from '../movies/movies';
@@ -7,7 +7,7 @@ import { MoviesPage } from '../movies/movies';
   selector: 'page-home',
   templateUrl: 'home.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
   public movies_list = new Array<any>();
   constructor(
     public navCtrl: NavController,
@@ -16,6 +16,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    console.log('ionViewDidLoad');
     //this.navCtrl.setRoot(HomePage);
     this.moviesProvider.getGenresMovies().subscribe(
       (data) => {
@@ -25,6 +26,10 @@ export class HomePage {
         console.log("ERROOOOOO");
       }
     )
+  }
+
+  ngOnInit(){
+    console.log('ngOnInit');
   }
 
   onSelect(movies): void {

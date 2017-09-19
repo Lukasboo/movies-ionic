@@ -12,7 +12,7 @@ import 'rxjs/add/operator/map';
 export class MoviesProvider {
 
   baseApiPath = "https://api.themoviedb.org/3";
-  imageBaseApiPath = "https://image.tmdb.org/t/p/w500/";
+  imageBaseApiPath = "https://image.tmdb.org/t/p/w300/";
 
   constructor(public http: Http) {
     console.log('Constructor Hello MoviesProvider Provider');

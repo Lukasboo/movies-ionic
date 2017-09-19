@@ -21,14 +21,14 @@
     Filmes Favoritos   
   </ion-card-header>
   
-  <ion-card *ngFor="let favoritemovies of movies_list">
+  <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
       <ion-list>
         <ion-title text-center>
             <h2>{{ favoritemovies.movietitle }}</h2>
         </ion-title> 
       </ion-list>
       <ion-title text-center>
-        <ion-img width="350" height="350" src="https://image.tmdb.org/t/p/w500{{ favoritemovies.movieposter_path }}"></ion-img>
+        <img src="https://image.tmdb.org/t/p/w300{{ favoritemovies.movieposter_path }}">
       </ion-title>
       <ion-row>
         <ion-col>

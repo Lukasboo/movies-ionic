@@ -42,19 +42,20 @@ export class LoginPage {
     this.navCtrl.setRoot(HomePage);
   }
 
+  logout() {
+    this.loginProvider.setUserMail("");
+    this.navCtrl.setRoot(LoginPage);
+  }
+
   async login() {
-    console.log("logando");
     const usuarios = await this.storage.get('usuarios') as any[];
     const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
     console.log(usuarios);
     if (resultado) {
       this.loginProvider.setUserMail(this.inputEmail);
-      console.log("setando useremail no provider = " + this.loginProvider.getUserMail());
-      console.log("indo para home page");
       this.goToHomePage();
     } else {
       this.userToast();
-      console.log("Usuario nao existe");
     }
   }
 
@@ -66,6 +67,4 @@ export class LoginPage {
     });
     toast.present();
   }
-
-
 }
