@@ -12,8 +12,8 @@ import { MoviesProvider } from '../providers/movies/movies';
 import { MoviesPage } from '../pages/movies/movies';
 import { MoviedetailPage } from '../pages/moviedetail/moviedetail';
 import { HttpModule } from '@angular/http';
-import { LoginProvider } from '../providers/login/login';
 import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
+import { UserModel } from '../models/user-model/user.model';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
     RegisterPage,
     MoviesPage,
     MoviedetailPage,
-    FavoriteMoviesPage
+    FavoriteMoviesPage,
   ],
   imports: [
     BrowserModule,
@@ -40,13 +40,14 @@ import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
     MoviesPage,
     MoviedetailPage,
     FavoriteMoviesPage
+    
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoviesProvider,
-    LoginProvider
+    UserModel
   ]
 })
 export class AppModule {}

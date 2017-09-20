@@ -14,9 +14,7 @@ export class MoviesProvider {
   baseApiPath = "https://api.themoviedb.org/3";
   imageBaseApiPath = "https://image.tmdb.org/t/p/w300/";
 
-  constructor(public http: Http) {
-    console.log('Constructor Hello MoviesProvider Provider');
-  }
+  constructor(public http: Http) {}
   
   getGenresMovies(){
     return this.http.get(this.baseApiPath + "/genre/movie/list?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");

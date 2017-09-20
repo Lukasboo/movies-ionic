@@ -1,22 +1,27 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar color="dark">
-      <ion-title>Menu</ion-title>
+    <ion-toolbar>
+      <ion-item class="transparent-background"> 
+        <ion-avatar>
+          <img src="assets/avatar/marty.png">
+        </ion-avatar>  
+        <ion-title text-left>
+            <h2 class="menuheadername"><strong>{{ userName }}</strong></h2>
+          </ion-title>
+          <ion-title text-left class="transparent-background">
+            <h2 class="menuheadername"><strong>{{ userEmail }}</strong></h2>
+          </ion-title>
+      </ion-item>  
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-item>
-      <ion-title text-center>
-        <ion-avatar item-start>
-          <img src="assets/icon/user.png">
-        </ion-avatar>  
-      </ion-title>  
-    </ion-item>  
     <ion-list>
-      <button color="primary"  menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
+      <ion-item>
+        <button color="primary"  menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+          {{p.title}}
+        </button>
+    </ion-item>
     </ion-list>
   </ion-content>
 </ion-menu>

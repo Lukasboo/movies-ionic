@@ -22,3 +22,31 @@
 .item-input {
     background-color: #F2F2F2;
 }
+
+ion-menu .header ion-avatar img{ 
+    width: 70px;
+    height: 70px;
+    margin-top: 20px;
+}
+
+.transparent-background{
+    background-color: transparent;
+}
+
+ion-menu .header {
+    background-image: url("../assets/images/abstract.jpg");
+    background-position: -4px 189px;
+}
+
+.toolbar-background-md{
+    background-color: transparent;
+}
+
+.item-md.item-block .item-inner{
+    border-bottom: none;
+}
+
+.menuheadername{
+    color: white;
+
+}

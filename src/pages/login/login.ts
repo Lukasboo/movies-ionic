@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
-import { LoginProvider } from '../../providers/login/login';
+import { UserModel } from '../../models/user-model/user.model';
 
 /**
  * Generated class for the LoginPage page.
@@ -22,16 +22,19 @@ export class LoginPage {
   public password: string;
   inputEmail: string;
   inputPassword: string;
+  user: any;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private storage: Storage,
     private toastCtrl: ToastController,
-    private loginProvider: LoginProvider
+    private userModel: UserModel,
+    public events: Events
   ) {
   }
 
-  OpenRegisterPage() {
+  goToRegisterPage() {
     this.navCtrl.push(RegisterPage);
   }
 
@@ -40,18 +43,19 @@ export class LoginPage {
   }
 
   logout() {
-    //window.location.reload;
-    this.loginProvider.setUserMail("");
-    this.navCtrl.setRoot(LoginPage);
+    window.location.reload;
+    //this.userModel.setUserMail("");
+    //this.navCtrl.setRoot(LoginPage);
   }
 
   async login() {
     const usuarios = await this.storage.get('usuarios') as any[];
     if(usuarios) {
       const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
-      console.log(usuarios);
       if (resultado) {
-        this.loginProvider.setUserMail(this.inputEmail);
+        this.user = await usuarios.filter((movie) => movie.email == this.inputEmail);
+        this.setUserData();
+        this.publishLoginEvent();
         this.goToHomePage();
       } else {
         this.userToast();
@@ -59,6 +63,15 @@ export class LoginPage {
     } else {
       this.userToast();
     }
+  }
+
+  setUserData(){
+    this.userModel.setUserMail(this.inputEmail);
+    this.userModel.setUserName(this.user[0].name);
+  }
+
+  publishLoginEvent(){
+    this.events.publish('user:login', this.userModel.getUserName(), this.userModel.getUserMail());
   }
 
   userToast() {

@@ -16,10 +16,12 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class RegisterPage {
+
   inputName: string;
   inputAge: number;
   inputEmail: string;
   inputPassword: string;
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -30,19 +32,24 @@ export class RegisterPage {
 
   async save() {
     let usuarios = await this.storage.get('usuarios') as any[];
-    if (!usuarios) {
-      usuarios = [];
-    }
+    if (!usuarios) usuarios = [];
+    this.userPush(usuarios);  
+    this.setUserStorage(usuarios);
+    this.sucessToast();
+  }  
+
+  setUserStorage(usuarios){
+    this.storage.set('usuarios', usuarios);
+  }
+
+  userPush(usuarios){
     usuarios.push({
       name: this.inputName,
       age: this.inputAge,
       email: this.inputEmail,
       password: this.inputPassword
     });
-    this.storage.set('usuarios', usuarios);
-    console.log(usuarios);
-    this.sucessToast();
-  }  
+  }
 
   sucessToast() {
     let toast = this.toastCtrl.create({
@@ -52,5 +59,4 @@ export class RegisterPage {
     });
     toast.present();
   }
-
 }

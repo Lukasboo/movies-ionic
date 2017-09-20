@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
 import { Storage } from '@ionic/storage';
-import { LoginProvider } from '../../providers/login/login';
+import { UserModel } from '../../models/user-model/user.model';
 
 /**
  * Generated class for the MoviedetailPage page.
@@ -19,7 +19,6 @@ import { LoginProvider } from '../../providers/login/login';
 })
 export class MoviedetailPage {
   
-  fabfavorite: any;
   parameter1: number;
   movieid: string;
   userEmail: string;
@@ -34,15 +33,23 @@ export class MoviedetailPage {
     public navParams: NavParams,
     private moviesProvider: MoviesProvider,
     private storage: Storage,
-    private loginProvider: LoginProvider,
+    private userModel: UserModel,
     private toastCtrl: ToastController,
     private changeDetectorRef:ChangeDetectorRef
   ) {
   }
 
   ionViewDidLoad() {
-    console.log("MOVIE DETAIL PAGE ");
+    this.getParameter();
+    this.getMoviesById();
+    this.userEmail = this.userModel.getUserMail();
+  }
+
+  getParameter(){
     this.parameter1 = this.navParams.get('param1'); 
+  }
+
+  getMoviesById(){
     this.moviesProvider.getMoviesById(this.parameter1).subscribe(
       (data) => {
         this.movie = data.json();
@@ -51,7 +58,6 @@ export class MoviedetailPage {
         console.log("Erro detail");
       }
     )
-    this.userEmail = this.loginProvider.getUserMail();
   }
 
   async changeFabColor(movie) {
@@ -61,12 +67,11 @@ export class MoviedetailPage {
       if (resultado) {
         this.disabled = true;
         this.myBtnColor = "danger";
-        this.changeDetectorRef.detectChanges();
       } else {
         this.disabled = false;
-        this.myBtnColor = "primary";
-        this.changeDetectorRef.detectChanges();
+        this.myBtnColor = "secondary";
       }
+      this.changeDetectorRef.detectChanges();
     }  
   }
 
@@ -77,35 +82,30 @@ export class MoviedetailPage {
     if (favoritemovies) {
       const resultado = favoritemovies.some((favorite) => favorite.movieid == movie.id && favorite.email == this.userEmail);
       if (resultado) {
-        console.log("fail toast");
         favoritemovies = [];
         this.failToast();
       } else {
-        favoritemovies.push({
-          email: this.userEmail,
-          movieid: movie.id,
-          movietitle: movie.title,
-          movieoverview: movie.overview,
-          movieposter_path: movie.poster_path
-        });
+        this.favoriteMoviesPush(favoritemovies, movie);
         this.storage.set('favoritemovies', favoritemovies);
-        console.log(favoritemovies);
         this.sucessToast();
       }  
     } else {
       favoritemovies = [];
-      favoritemovies.push({
-        email: this.userEmail,
-        movieid: movie.id,
-        movietitle: movie.title,
-        movieoverview: movie.overview,
-        movieposter_path: movie.poster_path
-      });
+      this.favoriteMoviesPush(favoritemovies, movie);
       this.storage.set('favoritemovies', favoritemovies);
-      console.log(favoritemovies);
       this.failToast();
     }
   }  
+
+  favoriteMoviesPush(favoritemovies, movie){
+    favoritemovies.push({
+      email: this.userEmail,
+      movieid: movie.id,
+      movietitle: movie.title,
+      movieoverview: movie.overview,
+      movieposter_path: movie.poster_path
+    });
+  }
 
   async isFavorite(movie){
     let favoritemovies = await this.storage.get('favoritemovies') as any[];

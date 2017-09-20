@@ -19,9 +19,7 @@ import 'rxjs/add/operator/map';
 })
 export class MoviesPage {
 
-
   public movies_list: Observable<any>;
-
   parameter1: number;
 
   constructor(
@@ -32,36 +30,21 @@ export class MoviesPage {
   }
 
   ionViewDidLoad() {
-    this.parameter1 = this.navParams.get('param1');
-    this.movies_list = this.moviesProvider.getMoviesByGenre(this.parameter1)
-      .do((response) => console.log(response.json()))
-      .map((response) => response.json())
-      .map((response) => response.results);
-
     this.getMoviesByGenre();
-    console.log("Iniciando movies")
-    /*this.parameter1 = this.navParams.get('param1'); 
-    this.moviesProvider.getMoviesByGenre(this.parameter1).subscribe(
-      (data) => {
-        const { results } = data.json();
-        this.movies_list = results;
-        console.log(this.movies_list);
-      }, error => {
-        console.log("Erro movie.ts");
-      }
-    )*/
   }
 
   onSelect(movies): void {
-    console.log(movies);
     this.navCtrl.push(MoviedetailPage, {
       param1: movies.id
     });
   }
 
   async getMoviesByGenre() {
-
-    console.log(this.parameter1);
+    this.parameter1 = this.navParams.get('param1');
+    this.movies_list = this.moviesProvider.getMoviesByGenre(this.parameter1)
+      .do((response) => console.log(response.json()))
+      .map((response) => response.json())
+      .map((response) => response.results);
   }
 
 }

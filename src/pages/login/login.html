@@ -19,7 +19,7 @@
       <ion-col>
         <ion-item>
           <ion-label floating>Email</ion-label>
-          <ion-input type="text" [(ngModel)]="inputEmail"></ion-input>
+          <ion-input type="text" email [(ngModel)]="inputEmail"></ion-input>
         </ion-item>
       </ion-col>  
     </ion-row>  
@@ -32,6 +32,6 @@
       </ion-col>  
     </ion-row>
     <button ion-button full (click)="login()">Entrar</button>
-    <button ion-button full (click)="OpenRegisterPage()">Registrar</button>
+    <button ion-button full (click)="goToRegisterPage()">Registrar</button>
   </ion-grid>
 </ion-content>
