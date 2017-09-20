@@ -16,14 +16,28 @@
   </ion-card-header>
 
   <ion-card *ngFor="let movies of movies_list | async" (click)="onSelect(movies)">
-    <ion-list>
-      <ion-title text-center>
-        <h2 class="movietitle">{{ movies.title }}</h2>
-        <!--<h2 class="movietitle">{{ movies.poster_path }}</h2>-->
-      </ion-title>
-    </ion-list>
-    <ion-title text-center>
-      <img src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
-    </ion-title>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            
+              <ion-title text-center margin-top="5px" margin-bottom="5px">
+                <h2 class="movietitle">{{ movies.title }}</h2>
+                <!--<h2 class="movietitle">{{ movies.poster_path }}</h2>-->
+              </ion-title>
+            
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>  
+            <ion-title text-center>
+              <img src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
+            </ion-title>
+          </ion-item>  
+        </ion-col>
+      </ion-row>    
+    </ion-grid>    
   </ion-card>
 </ion-content>
