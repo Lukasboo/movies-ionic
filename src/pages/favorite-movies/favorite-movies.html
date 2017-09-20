@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -24,7 +24,7 @@
   <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
       <ion-list>
         <ion-title text-center>
-            <h2>{{ favoritemovies.movietitle }}</h2>
+            <h2 text-center>{{ favoritemovies.movietitle }}</h2>
         </ion-title> 
       </ion-list>
       <ion-title text-center>
