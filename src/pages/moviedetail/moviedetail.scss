@@ -2,15 +2,15 @@ page-moviedetail {
 
 }
 
-/*.note{
-    color: black;
-    margin-top: 15px;
+.transparent-background{
+    background-color: transparent;
 }
 
-.customicon{
-    font-size: 50px;
+.allbackground {
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
 }
 
-.hide {
-  display: none;
-}*/
+.transparent-background{
+    background-color: transparent;
+}

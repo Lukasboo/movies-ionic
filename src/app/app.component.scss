@@ -29,8 +29,14 @@ ion-menu .header ion-avatar img{
     margin-top: 20px;
 }
 
+.allbackground {
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+}
+
 .transparent-background{
     background-color: transparent;
+    box-shadow: none;
 }
 
 ion-menu .header {

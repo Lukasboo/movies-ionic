@@ -19,8 +19,8 @@
       <ion-col>
         <ion-item class="transparent-background">
           <ion-label stacked color="light"><strong>Email</strong></ion-label>
-          <ion-icon name="mail" item-right primary isActive="false"></ion-icon>
-          <ion-input type="text" email [(ngModel)]="inputEmail" placeholder="movies@hotmail.com"></ion-input>
+          <ion-icon name="mail" item-right primary></ion-icon>
+          <ion-input type="text" email [(ngModel)]="inputEmail" placeholder="movies@movies.com"></ion-input>
         </ion-item>
       </ion-col>  
     </ion-row>  
@@ -28,13 +28,14 @@
       <ion-col>
         <ion-item class="transparent-background">
           <ion-label stacked color="light"><strong>Password</strong></ion-label>
-          <ion-icon name="key" item-right primary></ion-icon>
+          <ion-icon name="lock" item-right primary></ion-icon>
           <ion-input type="password" [(ngModel)]="inputPassword" placeholder="******"></ion-input>
         </ion-item>
       </ion-col>  
     </ion-row>
     
-    <button ion-button color="light" block outline (click)="login()">Entrar</button>
-    <button ion-button color="light" block outline (click)="goToRegisterPage()">Registrar</button>
+    <button ion-button color="light" round outline (click)="login()">Entrar</button>
+    <ion-label color="light" text-center margin-top="20px"><strong>Não tem conta?</strong></ion-label>
+    <button ion-button color="light" round outline (click)="goToRegisterPage()">Registrar</button>
   </ion-grid>
 </ion-content>

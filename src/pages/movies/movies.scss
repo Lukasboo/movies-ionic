@@ -3,7 +3,15 @@ page-movies {
 }
 
 .movietitle{
-    color: blue;
     margin-top: 5px;
+    text-decoration: underline;
 }
 
+.allbackground {
+    background-image: url('../assets/images/background.jpg');
+    background-size: cover;
+}
+
+.item, .item-divider {
+    border-color: white;
+  }

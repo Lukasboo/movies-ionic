@@ -10,18 +10,18 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <ion-card-header>
-    Filmes
+<ion-content padding class="allbackground">
+  <ion-card-header text-center>
+    <h1 style="color:#ffffff">Filmes</h1>
   </ion-card-header>
 
-  <ion-card *ngFor="let movies of movies_list | async" (click)="onSelect(movies)">
+  <ion-card *ngFor="let movies of movies_list | async" (click)="onSelect(movies)" class="transparent-background">
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-item>
+          <ion-item class="transparent-background">
               <ion-title text-center margin-top="5px">
-                <h2 class="movietitle" class="movietitle"><strong>{{ movies.title }}</strong></h2>
+                <h2 class="movietitle" style="color:#ffffff">{{ movies.title }}</h2>
                 <!--<h2 class="movietitle">{{ movies.poster_path }}</h2>-->
               </ion-title>
           </ion-item>
@@ -29,7 +29,7 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-item>  
+          <ion-item class="transparent-background">  
             <ion-title text-center>
               <img src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
             </ion-title>
