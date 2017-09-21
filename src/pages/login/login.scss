@@ -17,14 +17,14 @@ page-login {
   }
 
 
-  .text-input::-moz-placeholder {
-    color: red;
-  }
-  
-  .text-input:-ms-input-placeholder {
-    color: red;
-  }
-  
-  .text-input::-webkit-input-placeholder {
-    color: red;
-  }
+.text-input::-moz-placeholder {
+  color: grey;
+}
+
+.text-input:-ms-input-placeholder {
+  color: grey;
+}
+
+.text-input::-webkit-input-placeholder {
+  color: grey;
+}
