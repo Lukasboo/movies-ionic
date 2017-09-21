@@ -24,7 +24,7 @@
     <ion-row>
       <ion-col>
         <ion-title text-center>
-            <h2>{{ movie.title }}</h2>
+            <h2 class="detail-color">{{ movie.title }}</h2>
             <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}">
         </ion-title> 
       </ion-col>
@@ -32,13 +32,13 @@
     <ion-row>
       <ion-col>
         <ion-item class="transparent-background">
-          <ion-label text-center stacked color="soft">Sinopse</ion-label>
+          <ion-label text-center stacked color="light">Sinopse</ion-label>
         </ion-item>  
       </ion-col>
     </ion-row> 
     <ion-row>
         <ion-col>
-          <ion-note text-center class="note" color="soft" class="transparent-background">
+          <ion-note text-center class="note" color="light" class="transparent-background">
             {{ movie.overview }}
           </ion-note>
         </ion-col>
@@ -46,14 +46,14 @@
     <ion-row>
       <ion-col> 
         <ion-item class="transparent-background">
-          <ion-label text-center>Data de Lançamento: {{ movie.release_date }}</ion-label>
+          <ion-label text-center color="light">Data de Lançamento: {{ movie.release_date }}</ion-label>
         </ion-item>  
       </ion-col>
     </ion-row>
     <ion-row>
         <ion-col> 
           <ion-item class="transparent-background">
-            <ion-label text-center>Visite: <a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
+            <ion-label text-center color="light">Visite: <a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
           </ion-item>  
         </ion-col>
       </ion-row>

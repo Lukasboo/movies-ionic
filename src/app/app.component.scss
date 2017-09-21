@@ -19,6 +19,11 @@
     background-color: #f1f1f1;
 }*/
 
+ion-input {
+    color:"#ffffff";
+    text-decoration-color: #ffffff;
+}
+
 .item-input {
     background-color: #F2F2F2;
 }
@@ -41,6 +46,7 @@ ion-menu .header ion-avatar img{
 
 ion-menu .header {
     background-image: url("../assets/images/abstract.jpg");
+    background-size: cover;
     //background-position: -4px 189px;
 }
 
@@ -54,5 +60,5 @@ ion-menu .header {
 
 .menuheadername{
     color: white;
-
+    -webkit-text-stroke: 1px darkslategray;
 }

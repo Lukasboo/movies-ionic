@@ -11,11 +11,6 @@ page-login {
     background-color: transparent;
 }
 
-.logar {
-    color: red;
-  }
-
-
 .text-input::-moz-placeholder {
   color: grey;
 }
@@ -26,4 +21,9 @@ page-login {
 
 .text-input::-webkit-input-placeholder {
   color: grey;
+}
+
+ion-input input{
+  color: white;
+  
 }

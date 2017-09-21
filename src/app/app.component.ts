@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from "../pages/home/home";
 import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
-import { UserModel } from '../models/user-model/user.model';
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +12,7 @@ import { UserModel } from '../models/user-model/user.model';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = LoginPage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, component: any, icon: string}>;
   userName: string;
   userEmail: string;
 
@@ -21,7 +20,6 @@ export class MyApp {
     public platform: Platform, 
     public statusBar: StatusBar, 
     public splashScreen: SplashScreen, 
-    private userModel: UserModel,
     public events: Events
   ) {
     this.initializeApp();
@@ -35,9 +33,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Gêneros', component: HomePage },
-      { title: 'Favoritos', component: FavoriteMoviesPage },
-      { title: 'Sair', component: LoginPage }
+      { title: 'Gêneros', component: HomePage, icon: "ios-browsers-outline" },
+      { title: 'Favoritos', component: FavoriteMoviesPage, icon: "ios-star-outline" },
+      { title: 'Sair', component: LoginPage, icon: "ios-log-out-outline" }
     ];
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -45,10 +43,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
-
-    //this.userName = this.userModel.getUserName();
-    //console.log("app component username");
-    //console.log(this.userName);
   }
   
   initializeApp() {
