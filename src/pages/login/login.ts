@@ -23,6 +23,8 @@ export class LoginPage {
   inputEmail: string;
   inputPassword: string;
   user: any;
+  type= "password";
+  show = false;
 
   constructor(
     public navCtrl: NavController, 
@@ -82,4 +84,15 @@ export class LoginPage {
     });
     toast.present();
   }
+
+  toggleShow(){
+      this.show = !this.show;
+      if (this.show){
+          this.type = "text";
+      }
+      else {
+          this.type = "password";
+      }
+  }
+
 }
