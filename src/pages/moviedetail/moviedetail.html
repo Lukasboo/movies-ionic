@@ -28,26 +28,14 @@
           <ion-img src="https://image.tmdb.org/t/p/w45{{ movie.poster_path }}"></ion-img>
       </ion-avatar>
   </ion-item>  
-  <!--<ion-item class="transparent-background"> 
-    <ion-avatar>
-        <ion-img src="https://image.tmdb.org/t/p/w45{{ movie.poster_path }}"></ion-img>
-    </ion-avatar>
-  </ion-item>  -->
   <ion-grid>
-    <!--<ion-row>
+  <ion-row>
       <ion-col>
-        <ion-item class="transparent-background">
-          <ion-label text-center stacked color="light">Sinopse</ion-label>
-        </ion-item>  
+        <div text-center style="color: white" class="transparent-background">
+          {{ movie.overview }}
+        </div>
       </ion-col>
-    </ion-row> -->
-    <ion-row>
-        <ion-col>
-          <div text-center style="color: white" class="transparent-background">
-            {{ movie.overview }}
-          </div>
-        </ion-col>
-      </ion-row> 
+    </ion-row> 
     <ion-row>
       <ion-col> 
         <ion-item class="transparent-background">

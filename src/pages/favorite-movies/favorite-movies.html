@@ -5,34 +5,27 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="dark">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>FavoriteMovies</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding class="allbackground">
-  <ion-card-header>
-    Filmes Favoritos   
-  </ion-card-header>
-  
-  <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
-      <ion-list>
-        <ion-title text-center>
+  <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)" class="transparent-background">
+      <ion-list class="transparent-background" style="margin-top: 30px">
+        <!--<ion-title text-center>
             <h2 text-center>{{ favoritemovies.movietitle }}</h2>
-        </ion-title> 
+        </ion-title> -->
       </ion-list>
       <ion-title text-center>
         <img src="https://image.tmdb.org/t/p/w300{{ favoritemovies.movieposter_path }}">
       </ion-title>
       <ion-row>
         <ion-col>
-          <ion-note text-center class="note">
+          <ion-note text-center class="transparent-background" style="margin-top: 10px">
             {{ favoritemovies.movieoverview }}
           </ion-note>
         </ion-col>
