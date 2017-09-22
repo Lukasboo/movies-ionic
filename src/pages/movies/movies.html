@@ -28,13 +28,7 @@
       </ion-row>  [ngIf]="i % 4 === 0 -->
       <ion-row>
         <ion-col col-6 *ngFor="let movies of movies_list | async; let i = index" (click)="onSelect(movies)" class="transparent-background" >
-          <ion-item class="transparent-background">  
-            <ion-title text-center>
-              <img src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
-              <p>{{ i }}</p>
-            </ion-title>
-          </ion-item>  
-         
+          <img class="item-background" src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
         </ion-col>
       </ion-row>    
     </ion-grid>    

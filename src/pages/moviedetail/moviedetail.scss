@@ -18,3 +18,30 @@ page-moviedetail {
 .detail-color{
     color: white;
 }
+
+ion-item ion-avatar[ident] {
+    position: absolute;
+    bottom: -3px;
+    left: 39%;
+    margin: 0 auto;
+}    
+
+.item-md ion-avatar ion-img, .item-md ion-avatar img{
+    width: 70px;
+    height: 70px;
+    background-size: cover;
+    border-radius: 50% !important;
+    border: 2px solid #FFFFFF !important;
+}
+
+
+/*.custom-avatar {
+    height: 30vw;
+    width: 30vw;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+
+}*/

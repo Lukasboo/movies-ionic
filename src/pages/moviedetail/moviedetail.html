@@ -20,40 +20,46 @@
 </ion-header>
 
 <ion-content padding class="allbackground">
+  
+  <h2 text-center class="detail-color">{{ movie.title }}</h2>
+  <ion-item class="transparent-background"> 
+    <img src="https://image.tmdb.org/t/p/w500{{ movie.backdrop_path }}">
+      <ion-avatar style="position: absolute;" ident>
+          <ion-img src="https://image.tmdb.org/t/p/w45{{ movie.poster_path }}"></ion-img>
+      </ion-avatar>
+  </ion-item>  
+  <!--<ion-item class="transparent-background"> 
+    <ion-avatar>
+        <ion-img src="https://image.tmdb.org/t/p/w45{{ movie.poster_path }}"></ion-img>
+    </ion-avatar>
+  </ion-item>  -->
   <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-title text-center>
-            <h2 class="detail-color">{{ movie.title }}</h2>
-            <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}">
-        </ion-title> 
-      </ion-col>
-    </ion-row>
-    <ion-row>
+    <!--<ion-row>
       <ion-col>
         <ion-item class="transparent-background">
           <ion-label text-center stacked color="light">Sinopse</ion-label>
         </ion-item>  
       </ion-col>
-    </ion-row> 
+    </ion-row> -->
     <ion-row>
         <ion-col>
-          <ion-note text-center class="note" color="light" class="transparent-background">
+          <div text-center style="color: white" class="transparent-background">
             {{ movie.overview }}
-          </ion-note>
+          </div>
         </ion-col>
       </ion-row> 
     <ion-row>
       <ion-col> 
         <ion-item class="transparent-background">
-          <ion-label text-center color="light">Data de Lançamento: {{ movie.release_date }}</ion-label>
+          <ion-label color="light">Lançamento: {{ movie.release_date }}</ion-label>
+          <ion-icon name="ios-calendar-outline" color="light" item-left primary></ion-icon>
         </ion-item>  
       </ion-col>
     </ion-row>
     <ion-row>
         <ion-col> 
           <ion-item class="transparent-background">
-            <ion-label text-center color="light">Visite: <a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
+            <ion-label text-center color="light"><a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
           </ion-item>  
         </ion-col>
       </ion-row>
