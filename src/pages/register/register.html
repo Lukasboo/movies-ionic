@@ -14,29 +14,29 @@
   <form #f="ngForm" (ngSubmit)="f.valid ? save() : return">
     <ion-grid>
         <ion-row>  
-          <ion-col>
-            <ion-item class="transparent-background">
-              <ion-label stacked color="light">Nome</ion-label>
-              <ion-icon name="ios-contacts-outline" color="light" item-right primary></ion-icon>
-              <ion-input type="text" id="inname" [(ngModel)]="inputName" name="inputName" required></ion-input>
-            </ion-item>
-          </ion-col>  
-        </ion-row>  
-        <ion-row>
-          <ion-col>
-            <ion-item class="transparent-background">
-              <ion-label stacked color="light">Idade</ion-label>
-              <ion-icon name="ios-checkmark-outline" color="light" item-right primary></ion-icon>
-              <ion-input type="text" id="inage" [(ngModel)]="inputAge" name="inputAge" required></ion-input>
-            </ion-item>
-          </ion-col>  
-        </ion-row>  
+            <ion-col>
+              <ion-item class="transparent-background">
+                <ion-label stacked color="light">Nome</ion-label>
+                <ion-icon name="ios-contacts-outline" color="light" item-right primary></ion-icon>
+                <ion-input type="text" id="inname" [(ngModel)]="inputName" name="inputName" placeholder="Meu nome completo" required></ion-input>
+              </ion-item>
+            </ion-col>  
+          </ion-row>  
+          <ion-row>
+            <ion-col>
+              <ion-item class="transparent-background">
+                <ion-label stacked color="light">Idade</ion-label>
+                <ion-icon name="ios-checkmark-outline" color="light" item-right primary></ion-icon>
+                <ion-input type="text" id="inage" [(ngModel)]="inputAge" name="inputAge" placeholder="99" required></ion-input>
+              </ion-item>
+            </ion-col>  
+          </ion-row>  
         <ion-row>
           <ion-col>
             <ion-item class="transparent-background">
               <ion-label stacked color="light">Email</ion-label>
               <ion-icon name="ios-mail-outline" color="light" item-right primary></ion-icon>
-              <ion-input type="text" id="inemail" [(ngModel)]="inputEmail" name="inputEmail" required></ion-input>
+              <ion-input type="text" id="inemail" [(ngModel)]="inputEmail" name="inputEmail" placeholder="movies@movie.com.br" color="light" required></ion-input>
             </ion-item>
           </ion-col>  
         </ion-row>  
@@ -45,12 +45,12 @@
             <ion-item class="transparent-background">
               <ion-label stacked color="light">Senha</ion-label>
               <ion-icon name="ios-lock-outline" color="light" item-right primary></ion-icon>
-              <ion-input type="password" id="inpassword" [(ngModel)]="inputPassword" name="inputPassword" required></ion-input>
+              <ion-input type="password" id="inpassword" [(ngModel)]="inputPassword" name="inputPassword" placeholder="******" color="light" required></ion-input>
             </ion-item>
           </ion-col>  
         </ion-row>  
         <!--<button ion-button full type="submit" [disabled]="f.invalid" id="btsave" (click)="save()">Salvar</button>-->
-        <button ion-button color="light" block outline type="submit" [disabled]="f.invalid" id="btsave">Salvar</button>
+        <button ion-button color="light" round outline type="submit" [disabled]="f.invalid" id="btsave">Salvar</button>
       </ion-grid>
   </form>  
 </ion-content>

@@ -12,10 +12,9 @@
 
 <ion-content padding class="myview">
   <form #f="ngForm" (ngSubmit)="f.valid ? login() : return">
-      
-  ' <ion-title text-center>
-      <img src="assets/images/logotype.png">
-    </ion-title>
+    <div>
+      <img src="assets/images/logotype.png" class="logotype">
+    </div>  
     <ion-grid>
         <ion-row align-items-center>
           <ion-col col-10>
@@ -39,9 +38,7 @@
           <ion-col col-10>
             <ion-item class="transparent-background">
               <ion-label stacked color="light"><strong>Password</strong></ion-label>
-              <!--<ion-input type="password" [(ngModel)]="inputPassword" placeholder="******" color="dark"></ion-input>-->
               <ion-input type="{{type}}" [(ngModel)]="inputPassword" name="inputPassword" placeholder="******" color="dark"></ion-input>
-              
             </ion-item>
           </ion-col>
           <ion-col col-2>
@@ -54,32 +51,5 @@
         <ion-label color="light" text-center margin-top="20px"><strong>Não tem conta?</strong></ion-label>
         <button ion-button color="light" round outline (click)="goToRegisterPage()">Registrar</button>
       </ion-grid>
-    <!--<ion-grid>
-      <ion-row>
-        <ion-col>
-          <ion-item class="transparent-background">
-            <ion-label stacked color="light"><strong>Email</strong></ion-label>
-            <ion-icon name="ios-mail-outline" color="light" item-right primary></ion-icon>
-            <ion-input type="text" email [(ngModel)]="inputEmail" placeholder="movies@movies.com" color="light"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row align-items-center>
-        <ion-col col-10>
-          <ion-item class="transparent-background">
-            <ion-label stacked color="light"><strong>Password</strong></ion-label>
-            <ion-input type="password" [(ngModel)]="inputPassword" placeholder="******" color="dark"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col col-2>
-          <button ion-button icon-only clear (click)="goToRegisterPage()"  style="margin-left: 10px">
-            <ion-icon name="ios-lock-outline" color="light" item-right primary></ion-icon>
-          </button>
-        </ion-col>
-      </ion-row>
-      <button ion-button color="light" round outline (click)="login()">Entrar</button>
-      <ion-label color="light" text-center margin-top="20px"><strong>Não tem conta?</strong></ion-label>
-      <button ion-button color="light" round outline (click)="goToRegisterPage()">Registrar</button>
-    </ion-grid>-->
   </form>
 </ion-content>

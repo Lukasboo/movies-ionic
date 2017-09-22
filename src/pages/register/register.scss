@@ -1,12 +1,34 @@
 page-register {
 
+    .allbackground {
+        background-image: url('../assets/images/background.jpg');
+        background-size: cover;
+    }
+    
+    .transparent-background{
+        background-color: transparent;
+    }
+    
+    .text-input::-moz-placeholder {
+        color: grey;
+    }
+      
+    .text-input:-ms-input-placeholder {
+        color: grey;
+    }
+      
+    .text-input::-webkit-input-placeholder {
+        color: grey;
+    }
+      
+    ion-input input{
+        color: white; 
+        //border-bottom: 2px solid white !important;
+    }
+    
+    #btsave{
+        margin-top: 50px;
+    }
+
 }
 
-.allbackground {
-    background-image: url('../assets/images/background.jpg');
-    background-size: cover;
-}
-
-.transparent-background{
-    background-color: transparent;
-}

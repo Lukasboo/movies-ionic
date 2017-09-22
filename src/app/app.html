@@ -17,7 +17,7 @@
 
   <ion-content class="allbackground" padding="10px">
     <ion-list *ngFor="let p of pages">
-          <ion-item class="transparent-background" text-left>
+          <ion-item class="transparent-background" text-left style="border-bottom: 2px solid white !important;">
             <!--<ion-icon name="{{ icon }}" item-right primary></ion-icon>-->
             <ion-icon [name]="p.icon" item-right primary color="light"></ion-icon>
             {{ p.name }}
