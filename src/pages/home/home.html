@@ -14,6 +14,16 @@
     <h1 style="color: #ffffff">Escolha o tipo de filme!</h1>
   </ion-card-header>
   
+  <ion-item class="transparent-background">
+    <ion-label class="transparent-background">Gender</ion-label>
+    <ion-select [(ngModel)]="gender" color="#000000" class="transparent-background">
+      <ion-option value="top_rated">Mais votados</ion-option>
+      <ion-option value="upcoming_movies">Em Breve</ion-option>
+      <ion-option value="now_playing">Cinema atualmente</ion-option>
+      <ion-option value="popular">Populares</ion-option>
+    </ion-select>
+  </ion-item>
+
   <ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
       <button ion-button color="light" block outline no-lines>
         <!--<ion-icon name="arrow-forward" item-left></ion-icon>-->

@@ -14,6 +14,7 @@ import { MoviedetailPage } from '../pages/moviedetail/moviedetail';
 import { HttpModule } from '@angular/http';
 import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
 import { UserModel } from '../models/user-model/user.model';
+import { LoginProvider } from '../providers/login/login';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { UserModel } from '../models/user-model/user.model';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoviesProvider,
-    UserModel
+    UserModel,
+    LoginProvider
   ]
 })
 export class AppModule {}

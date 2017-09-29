@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, Events } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, Events, LoadingController } from 'ionic-angular';
 import { RegisterPage } from '../register/register';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { UserModel } from '../../models/user-model/user.model';
+import { LoginProvider } from '../../providers/login/login';
 
 /**
  * Generated class for the LoginPage page.
@@ -25,6 +26,7 @@ export class LoginPage {
   user: any;
   type= "password";
   show = false;
+  loginValid: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -32,7 +34,9 @@ export class LoginPage {
     private storage: Storage,
     private toastCtrl: ToastController,
     private userModel: UserModel,
-    public events: Events
+    public events: Events,
+    public loadingCtrl: LoadingController,
+    private loginProvider: LoginProvider
   ) {
   }
 
@@ -51,21 +55,47 @@ export class LoginPage {
   }
 
   async login() {
-    const usuarios = await this.storage.get('usuarios') as any[];
+    /*console.log("login print");
+    console.log(this.loginProvider.loginValidate());*/
+
+    this.loginProvider.loginValidate(this.inputEmail, this.inputPassword).subscribe(
+      (data) => {
+        console.log("data print");
+        console.log(data.json().resp);
+        this.loginValid = data.json().resp;
+        console.log("login valid = " + this.loginValid);
+
+        if(this.loginValid === "true"){
+          //this.setUserData();
+          this.publishLoginEvent();
+          this.presentLoading();
+        } else {
+          this.userToast();
+        }
+      }, error => {
+        console.log(error);
+      }
+    )
+
+    console.log("login valid = " + this.loginValid);
+   
+  }
+    /*const usuarios = await this.storage.get('usuarios') as any[];
     if(usuarios) {
       const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
       if (resultado) {
         this.user = await usuarios.filter((movie) => movie.email == this.inputEmail);
         this.setUserData();
         this.publishLoginEvent();
-        this.goToHomePage();
+        this.presentLoading();
+        //this.goToHomePage();
       } else {
         this.userToast();
       }
     } else {
       this.userToast();
-    }
-  }
+    }*/
+  //}
 
   setUserData(){
     this.userModel.setUserMail(this.inputEmail);
@@ -93,6 +123,15 @@ export class LoginPage {
       else {
           this.type = "password";
       }
+  }
+
+  presentLoading() {
+    let loader = this.loadingCtrl.create({
+      content: "Please wait...",
+      duration: 1500
+    });
+    loader.present();
+    this.goToHomePage();
   }
 
 }
