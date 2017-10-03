@@ -25,7 +25,7 @@ export class MoviedetailPage {
   userEmail: string;
   public movie = new Array<any>();
   public trailer = new Array<any>();
-  myBtnColor = "primary";
+  myBtnColor = "serious";
   isFavorited: any;
   status: boolean = false;
   disabled: boolean;
@@ -73,7 +73,7 @@ export class MoviedetailPage {
         this.myBtnColor = "danger";
       } else {
         this.disabled = false;
-        this.myBtnColor = "secondary";
+        this.myBtnColor = "serious";
       }
       this.changeDetectorRef.detectChanges();
     }  

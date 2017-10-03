@@ -46,7 +46,7 @@ ion-menu .header ion-avatar img{
 }
 
 ion-menu .header {
-    background-image: url("../assets/images/abstract.jpg");
+    background-image: url("../assets/images/ironman.png");
     background-size: cover;
     //background-position: -4px 189px;
 }
@@ -64,3 +64,8 @@ ion-menu .header {
     text-shadow: 2px 2px #000000;
     //-webkit-text-stroke: 1px darkslategray;
 }
+
+.toolbar-md {
+    border-bottom: 3px solid black;
+}
+

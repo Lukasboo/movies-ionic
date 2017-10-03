@@ -14,13 +14,13 @@
 </ion-header>
 
 <ion-content padding class="allbackground">
-  <ion-card-header text-center>
+  <!--<ion-card-header text-center>
     <h1 style="color:#ffffff">Filmes</h1>
-  </ion-card-header>
+  </ion-card-header>-->
     <ion-grid>
       <ion-row>
         <ion-col col-6 *ngFor="let movies of movies_list | async; let i = index" (click)="onSelect(movies)" class="transparent-background" >
-          <img class="item-background" src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
+          <img class="images-shadow" src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
         </ion-col>
       </ion-row>    
     </ion-grid>    

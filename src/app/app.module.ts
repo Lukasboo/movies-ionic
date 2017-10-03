@@ -19,6 +19,9 @@ import { LatestMoviesPage } from '../pages/latest-movies/latest-movies';
 import { MoviesTopRatedPage } from '../pages/movies-top-rated/movies-top-rated';
 import { MoviesUpcomingPage } from '../pages/movies-upcoming/movies-upcoming';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
+import { SeriesProvider } from '../providers/series/series';
+import { SeriesPage } from '../pages/series/series';
+import { SeriesDetailPage } from '../pages/series-detail/series-detail';
 
 @NgModule({
   declarations: [
@@ -32,6 +35,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     LatestMoviesPage,
     MoviesTopRatedPage,
     MoviesUpcomingPage,
+    SeriesPage,
+    SeriesDetailPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +55,9 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     FavoriteMoviesPage,
     LatestMoviesPage,
     MoviesTopRatedPage,
-    MoviesUpcomingPage
+    MoviesUpcomingPage,
+    SeriesPage,
+    SeriesDetailPage
   ],
   providers: [
     StatusBar,
@@ -59,7 +66,8 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
     MoviesProvider,
     UserModel,
     LoginProvider,
-    YoutubeVideoPlayer
+    YoutubeVideoPlayer,
+    SeriesProvider
   ]
 })
 export class AppModule {}

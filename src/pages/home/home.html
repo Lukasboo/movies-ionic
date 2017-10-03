@@ -3,16 +3,14 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Gêneros
-    </ion-title>
+    <ion-title style="text-shadow: 3px 4px black;">Gêneros</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="allbackground">
-  <ion-card-header text-center>
+  <!--<ion-card-header text-center style="border-bottom: 2px solid #141416;">
     <h1 style="color: #ffffff">Escolha o tipo de filme!</h1>
-  </ion-card-header>
+  </ion-card-header>-->
   
   <!--<ion-item class="transparent-background">
     <ion-label class="transparent-background">Gender</ion-label>
@@ -41,14 +39,10 @@
 
   <ion-grid>
     <ion-row class="home-button">
-      
         <button ion-item color="light" *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="home-button" no-lines>
             {{ movies.name }}
             <ion-icon item-end name="ios-arrow-forward-outline" color="light"></ion-icon>
         </button>
-        
-      
-      
     </ion-row>  
   </ion-grid>
 

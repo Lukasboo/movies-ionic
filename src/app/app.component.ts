@@ -9,6 +9,7 @@ import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
 import { LatestMoviesPage } from '../pages/latest-movies/latest-movies';
 import { MoviesTopRatedPage } from '../pages/movies-top-rated/movies-top-rated';
 import { MoviesUpcomingPage } from '../pages/movies-upcoming/movies-upcoming';
+import { SeriesPage } from '../pages/series/series';
 
 @Component({
   templateUrl: 'app.html'
@@ -42,6 +43,7 @@ export class MyApp {
       { title: 'Mais Votados', component: MoviesTopRatedPage, icon: "ios-thumbs-up-outline" },
       { title: 'Estréia', component: MoviesUpcomingPage, icon: "ios-videocam-outline" },
       { title: 'Favoritos', component: FavoriteMoviesPage, icon: "ios-star-outline" },
+      { title: 'Series', component: SeriesPage, icon: "ios-flash-outline" },
       { title: 'Sair', component: LoginPage, icon: "ios-log-out-outline" }
     ];
     platform.ready().then(() => {

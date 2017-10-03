@@ -1,9 +1,9 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
+    <ion-toolbar style="border-bottom: 2px solid white;">
       <ion-item class="transparent-background"> 
         <ion-avatar>
-          <img src="assets/avatar/marty.jpg">
+          <img src="assets/avatar/marty.jpg" style="border: 2px solid white;">
         </ion-avatar>  
         <ion-title text-left margin-top="10px">
             <h2 class="menuheadername">{{ userName }}</h2>
@@ -18,8 +18,8 @@
   <ion-content class="allbackground">
     <ion-list *ngFor="let p of pages">
           <ion-item class="transparent-background" text-left style="border-bottom: 1px solid white !important;" color="light">
-            <ion-label menuClose color="light" (click)="openPage(p)">{{p.title}}</ion-label>
-            <ion-icon [name]="p.icon" item-right primary color="light"></ion-icon>
+            <ion-label menuClose color="light" (click)="openPage(p)" style="text-shadow: 3px 3px black">{{p.title}}</ion-label>
+            <ion-icon [name]="p.icon" item-right primary color="light" style="text-shadow: 3px 3px black"></ion-icon>
             {{ p.name }}
             <!--<button menuClose ion-button text-left color="light" full (click)="openPage(p)" style="color: #ffffff" class="transparent-background">
                 {{p.title}}
