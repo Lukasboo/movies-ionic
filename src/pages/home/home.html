@@ -9,7 +9,7 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="allbackground">
+<ion-content class="allbackground">
   <ion-card-header text-center>
     <h1 style="color: #ffffff">Escolha o tipo de filme!</h1>
   </ion-card-header>
@@ -24,10 +24,32 @@
     </ion-select>
   </ion-item>-->
 
-  <ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
+  <!--<ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
       <button ion-button color="light" block outline no-lines>
         <!--<ion-icon name="arrow-forward" item-left></ion-icon>-->
-        {{ movies.name }}
+        <!--{{ movies.name }}
       </button>
-  </ion-card>
+  </ion-card>-->
+
+  <!--<ion-list *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
+    <ion-item class="transparent-background" item-right>
+      <ion-label style="color: #ffffff">{{ movies.name }}
+          <ion-icon item-end name="ios-arrow-forward-outline"></ion-icon>
+      </ion-label>
+    </ion-item>
+  </ion-list>-->
+
+  <ion-grid>
+    <ion-row class="home-button">
+      
+        <button ion-item color="light" *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="home-button" no-lines>
+            {{ movies.name }}
+            <ion-icon item-end name="ios-arrow-forward-outline" color="light"></ion-icon>
+        </button>
+        
+      
+      
+    </ion-row>  
+  </ion-grid>
+
 </ion-content>

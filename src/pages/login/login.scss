@@ -1,35 +1,34 @@
 page-login {
+    .myview {
+      background-image: url('../assets/images/loginbackground.jpg');
+      background-size: cover;
+  }
 
+  .transparent-background{
+      background-color: transparent;
+  }
+
+  .text-input::-moz-placeholder {
+    color: grey;
+  }
+
+  .text-input:-ms-input-placeholder {
+    color: grey;
+  }
+
+  .text-input::-webkit-input-placeholder {
+    color: grey;
+  }
+
+  ion-input input{
+    color: white; 
+  }
+
+  .logotype{
+    margin-top: -27px;
+    height: 150px;
+    width: 200px;
+    margin-left: 25%;
+  }  
 }
 
-.myview {
-    background-image: url('../assets/images/loginbackground.jpg');
-    background-size: cover;
-}
-
-.transparent-background{
-    background-color: transparent;
-}
-
-.text-input::-moz-placeholder {
-  color: grey;
-}
-
-.text-input:-ms-input-placeholder {
-  color: grey;
-}
-
-.text-input::-webkit-input-placeholder {
-  color: grey;
-}
-
-ion-input input{
-  color: white; 
-}
-
-.logotype{
-  margin-top: -27px;
-  height: 150px;
-  width: 200px;
-  margin-left: 25%;
-}  

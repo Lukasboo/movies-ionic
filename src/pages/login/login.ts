@@ -126,7 +126,7 @@ export class LoginPage {
   presentLoading() {
     let loader = this.loadingCtrl.create({
       content: "Please wait...",
-      duration: 1500
+      duration: 200
     });
     loader.present();
     this.goToHomePage();

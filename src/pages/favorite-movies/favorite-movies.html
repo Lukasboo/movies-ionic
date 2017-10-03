@@ -9,20 +9,41 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>FavoriteMovies</ion-title>
+    <ion-title>Filmes Favoritados</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="allbackground">
+<ion-content class="allbackground">
+  <ion-label text-center color="light">Filmes</ion-label>
   <ion-list *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
-    <ion-item class="favorite-items">
+    <ion-item>
       <ion-thumbnail item-start>
-        <img src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}" class="favorite-img">
+          <img src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}" class="favorite-img">
       </ion-thumbnail>
-      <h2 text-center>{{ favoritemovies.movietitle }}</h2>
+      <h2 class="white-label" text-left>{{ favoritemovies.movietitle }}</h2>
     </ion-item>
   </ion-list>
 </ion-content>
+
+<!--<ion-content padding class="allbackground">
+  <ion-grid *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
+      <ion-item class="favorite-items">
+    <ion-row>
+      <ion-col col-3>
+        <ion-thumbnail item-start>
+          <img src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}" class="favorite-img">
+        </ion-thumbnail>
+        </ion-col>
+        <ion-col col-9>
+          <h2 class="white-label" text-left>{{ favoritemovies.movietitle }}</h2>
+          <div text-center style="color: white" class="transparent-background">
+            {{ favoritemovies.movieoverview }}
+          </div>
+        </ion-col>  
+    </ion-row>
+  </ion-item>
+  </ion-grid>
+</ion-content>-->
 
 <!--<ion-content padding class="allbackground">
   <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)" class="black-background">

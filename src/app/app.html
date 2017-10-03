@@ -15,14 +15,15 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-content class="allbackground" padding="10px">
+  <ion-content class="allbackground">
     <ion-list *ngFor="let p of pages">
-          <ion-item class="transparent-background" text-left style="border-bottom: 2px solid white !important;">
+          <ion-item class="transparent-background" text-left style="border-bottom: 1px solid white !important;" color="light">
+            <ion-label menuClose color="light" (click)="openPage(p)">{{p.title}}</ion-label>
             <ion-icon [name]="p.icon" item-right primary color="light"></ion-icon>
             {{ p.name }}
-            <button menuClose ion-button color="light" full (click)="openPage(p)" style="color: #ffffff" class="transparent-background">
+            <!--<button menuClose ion-button text-left color="light" full (click)="openPage(p)" style="color: #ffffff" class="transparent-background">
                 {{p.title}}
-            </button>
+            </button>-->
           </ion-item>  
     </ion-list>
   </ion-content>

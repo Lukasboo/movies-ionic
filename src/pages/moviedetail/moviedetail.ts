@@ -107,7 +107,8 @@ export class MoviedetailPage {
       movieid: movie.id,
       movietitle: movie.title,
       movieoverview: movie.overview,
-      movieposter_path: movie.poster_path
+      movieposter_path: movie.poster_path,
+      movierelease_date: movie.release_date
     });
   }
 
