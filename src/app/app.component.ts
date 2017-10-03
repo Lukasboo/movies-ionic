@@ -4,7 +4,11 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginPage } from '../pages/login/login';
 import { HomePage } from "../pages/home/home";
+import { MoviesPage } from "../pages/movies/movies";
 import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
+import { LatestMoviesPage } from '../pages/latest-movies/latest-movies';
+import { MoviesTopRatedPage } from '../pages/movies-top-rated/movies-top-rated';
+import { MoviesUpcomingPage } from '../pages/movies-upcoming/movies-upcoming';
 
 @Component({
   templateUrl: 'app.html'
@@ -34,6 +38,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Gêneros', component: HomePage, icon: "ios-browsers-outline" },
+      { title: 'Últimos Adicionados', component: LatestMoviesPage, icon: "ios-calendar-outline" },
+      { title: 'Mais Votados', component: MoviesTopRatedPage, icon: "ios-thumbs-up-outline" },
+      { title: 'Estréia', component: MoviesUpcomingPage, icon: "ios-videocam-outline" },
       { title: 'Favoritos', component: FavoriteMoviesPage, icon: "ios-star-outline" },
       { title: 'Sair', component: LoginPage, icon: "ios-log-out-outline" }
     ];

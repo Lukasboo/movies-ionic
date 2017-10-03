@@ -45,11 +45,22 @@
       </ion-col>
     </ion-row>
     <ion-row>
-        <ion-col> 
-          <ion-item class="transparent-background">
-            <ion-label text-center color="light"><a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
-          </ion-item>  
-        </ion-col>
-      </ion-row>
-  </ion-grid>  
+      <ion-col> 
+        <ion-item class="transparent-background">
+          <ion-label text-center color="light"><a href="{{ movie.homepage }}">{{ movie.homepage }}</a></ion-label>
+        </ion-item>  
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col> 
+        <ion-item class="transparent-background">
+          <ion-fab middle left edge class="transparent-background">
+            <button ion-fab mini (click)="openTrailer()" class="transparent-background">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </button>
+          </ion-fab>
+        </ion-item>  
+      </ion-col>
+    </ion-row>
+  </ion-grid> 
 </ion-content>

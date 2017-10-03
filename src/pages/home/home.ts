@@ -21,8 +21,9 @@ export class HomePage {
 
   onSelect(movies): void {
     this.navCtrl.push(MoviesPage, {
-      param1: movies.id, param2: movies.name
+      param1: movies.id
     });
+    
   }
 
   getGenresMovies(){

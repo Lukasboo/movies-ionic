@@ -15,6 +15,10 @@ import { HttpModule } from '@angular/http';
 import { FavoriteMoviesPage } from "../pages/favorite-movies/favorite-movies";
 import { UserModel } from '../models/user-model/user.model';
 import { LoginProvider } from '../providers/login/login';
+import { LatestMoviesPage } from '../pages/latest-movies/latest-movies';
+import { MoviesTopRatedPage } from '../pages/movies-top-rated/movies-top-rated';
+import { MoviesUpcomingPage } from '../pages/movies-upcoming/movies-upcoming';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 @NgModule({
   declarations: [
@@ -25,6 +29,9 @@ import { LoginProvider } from '../providers/login/login';
     MoviesPage,
     MoviedetailPage,
     FavoriteMoviesPage,
+    LatestMoviesPage,
+    MoviesTopRatedPage,
+    MoviesUpcomingPage,
   ],
   imports: [
     BrowserModule,
@@ -40,8 +47,10 @@ import { LoginProvider } from '../providers/login/login';
     RegisterPage,
     MoviesPage,
     MoviedetailPage,
-    FavoriteMoviesPage
-    
+    FavoriteMoviesPage,
+    LatestMoviesPage,
+    MoviesTopRatedPage,
+    MoviesUpcomingPage
   ],
   providers: [
     StatusBar,
@@ -49,7 +58,8 @@ import { LoginProvider } from '../providers/login/login';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     MoviesProvider,
     UserModel,
-    LoginProvider
+    LoginProvider,
+    YoutubeVideoPlayer
   ]
 })
 export class AppModule {}

@@ -6,7 +6,10 @@
 -->
 <ion-header>
   <ion-navbar color="dark">
-    <ion-title>Filmes</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Últimos Adicionados</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -14,23 +17,11 @@
   <ion-card-header text-center>
     <h1 style="color:#ffffff">Filmes</h1>
   </ion-card-header>
-
-  <!--<ion-card *ngFor="let movies of movies_list | async" (click)="onSelect(movies)" class="transparent-background">-->
     <ion-grid>
-      <!--<ion-row>
-        <ion-col>
-          <ion-item class="transparent-background">
-              <ion-title text-center margin-top="5px">
-                <h2 class="movietitle" style="color:#ffffff">{{ movies.title }}</h2>
-              </ion-title>
-          </ion-item>
-        </ion-col>
-      </ion-row>  [ngIf]="i % 4 === 0 -->
       <ion-row>
         <ion-col col-6 *ngFor="let movies of movies_list | async; let i = index" (click)="onSelect(movies)" class="transparent-background" >
           <img class="item-background" src="https://image.tmdb.org/t/p/w500{{ movies.poster_path }}">
         </ion-col>
       </ion-row>    
     </ion-grid>    
-  <!--</ion-card>-->
 </ion-content>

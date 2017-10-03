@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Observable } from 'rxjs/Observable';
 import { MoviesProvider } from '../../providers/movies/movies';
 import { MoviedetailPage } from '../moviedetail/moviedetail';
-import { Observable } from 'rxjs';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+
 /**
- * Generated class for the MoviesPage page.
+ * Generated class for the MoviesTopRatedPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,29 +13,23 @@ import 'rxjs/add/operator/map';
 
 @IonicPage()
 @Component({
-  selector: 'page-movies',
-  templateUrl: 'movies.html'
+  selector: 'page-movies-top-rated',
+  templateUrl: 'movies-top-rated.html',
 })
-export class MoviesPage {
+export class MoviesTopRatedPage {
 
   public movies_list: Observable<any>;
   parameter1: number;
 
   constructor(
-    public navCtrl: NavController,
+    public navCtrl: NavController, 
     public navParams: NavParams,
     private moviesProvider: MoviesProvider
   ) {
   }
 
   ionViewDidLoad() {
-    var parametro = this.navParams.get('param1');
-
-    if(parametro === "latest"){
-      
-    } else {
-      this.getMoviesByGenre();
-    } 
+      this.getMoviesTopRated();
   }
 
   onSelect(movies): void {
@@ -45,9 +38,9 @@ export class MoviesPage {
     });
   }
 
-  async getMoviesByGenre() {
-    this.parameter1 = this.navParams.get('param1');
-    this.movies_list = this.moviesProvider.getMoviesByGenre(this.parameter1)
+  async getMoviesTopRated() {
+    //this.parameter1 = this.navParams.get('param1');
+    this.movies_list = this.moviesProvider.getMoviesTopRated()
       .do((response) => console.log(response.json()))
       .map((response) => response.json())
       .map((response) => response.results);

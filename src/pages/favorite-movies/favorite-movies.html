@@ -14,12 +14,52 @@
 </ion-header>
 
 <ion-content padding class="allbackground">
+  <ion-list *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)">
+    <ion-item class="favorite-items">
+      <ion-thumbnail item-start>
+        <img src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}" class="favorite-img">
+      </ion-thumbnail>
+      <h2 text-center>{{ favoritemovies.movietitle }}</h2>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+<!--<ion-content padding class="allbackground">
+  <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)" class="black-background">
+      <ion-grid class="transparent-background" style="margin-top: 30px">
+        <ion-row>
+          <ion-col>
+            <ion-thumbnail item-start>
+              <ion-img height="70px" width="70px" src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}"></ion-img>
+              <!--<img src="https://image.tmdb.org/t/p/w92{{ favoritemovies.movieposter_path }}">-->
+            <!--</ion-thumbnail>
+          </ion-col>
+          <ion-col>
+            <ion-label text-center class="white-label">
+                <h2 text-center>{{ favoritemovies.movietitle }}</h2>
+            </ion-label>  
+          </ion-col>  
+        </ion-row>
+      </ion-grid>-->
+      
+      <!--<ion-row>
+        <ion-col>
+          <ion-note text-center class="transparent-background" style="margin-top: 10px">
+            {{ favoritemovies.movieoverview }}
+          </ion-note>
+        </ion-col>
+      </ion-row>--> 
+    <!--</ion-card>
+</ion-content>-->
+
+
+<!--<ion-content padding class="allbackground">
   <ion-card *ngFor="let favoritemovies of movies_list" (click)="presentConfirm(favoritemovies)" class="transparent-background">
       <ion-list class="transparent-background" style="margin-top: 30px">
         <!--<ion-title text-center>
             <h2 text-center>{{ favoritemovies.movietitle }}</h2>
         </ion-title> -->
-      </ion-list>
+      <!--</ion-list>
       <ion-title text-center>
         <img src="https://image.tmdb.org/t/p/w300{{ favoritemovies.movieposter_path }}">
       </ion-title>
@@ -31,4 +71,4 @@
         </ion-col>
       </ion-row> 
     </ion-card>
-</ion-content>
+</ion-content>-->

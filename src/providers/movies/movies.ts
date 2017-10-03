@@ -31,4 +31,19 @@ export class MoviesProvider {
   getMoviesById(idMovie: number){
     return this.http.get(this.baseApiPath + "/movie/" + idMovie + "?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR")
   }
+
+  getMoviesTopRated(){
+    return this.http.get(this.baseApiPath + "/movie/top_rated?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
+  }
+
+  getMoviesUpcoming(){
+    return this.http.get(this.baseApiPath + "/movie/upcoming?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
+  }
+  
+  getMovieTrailer(movieid){
+    console.log("movies provider get");
+    //console.log("this.http.get(" + this.baseApiPath + "/movie/" + movieid + "/videos?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR)");
+    return this.http.get(this.baseApiPath + "/movie/" + movieid + "/videos?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
+  }
+
 }

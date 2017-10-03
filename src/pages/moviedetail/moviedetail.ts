@@ -4,6 +4,7 @@ import { ToastController } from 'ionic-angular';
 import { MoviesProvider } from '../../providers/movies/movies';
 import { Storage } from '@ionic/storage';
 import { UserModel } from '../../models/user-model/user.model';
+import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
 /**
  * Generated class for the MoviedetailPage page.
@@ -23,10 +24,12 @@ export class MoviedetailPage {
   movieid: string;
   userEmail: string;
   public movie = new Array<any>();
+  public trailer = new Array<any>();
   myBtnColor = "primary";
   isFavorited: any;
   status: boolean = false;
   disabled: boolean;
+  youtubeBaseUrl = "https://www.youtube.com/watch?v=";
 
   constructor(
     public navCtrl: NavController, 
@@ -35,7 +38,8 @@ export class MoviedetailPage {
     private storage: Storage,
     private userModel: UserModel,
     private toastCtrl: ToastController,
-    private changeDetectorRef:ChangeDetectorRef
+    private changeDetectorRef:ChangeDetectorRef,
+    private youtube: YoutubeVideoPlayer
   ) {
   }
 
@@ -140,4 +144,24 @@ export class MoviedetailPage {
     });
     toast.present();
   }
+
+  getTrailerId(){
+    
+    //this.trailer = this.moviesProvider.getMovieTrailer(this.parameter1);
+    
+    this.moviesProvider.getMovieTrailer(this.parameter1).subscribe(
+      (data) => {
+        this.trailer = data.json().results[0].key;
+        console.log(this.trailer);
+      }, error => {
+        console.log("Erro detail");
+      }
+    )
+  }
+
+  openTrailer(){
+    this.getTrailerId();
+    this.youtube.openVideo(this.trailer.toString());
+  }
+
 }

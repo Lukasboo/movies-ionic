@@ -58,7 +58,7 @@ export class LoginPage {
     /*console.log("login print");
     console.log(this.loginProvider.loginValidate());*/
 
-    this.loginProvider.loginValidate(this.inputEmail, this.inputPassword).subscribe(
+    /*this.loginProvider.loginValidate(this.inputEmail, this.inputPassword).subscribe(
       (data) => {
         console.log("data print");
         console.log(data.json().resp);
@@ -66,7 +66,7 @@ export class LoginPage {
         console.log("login valid = " + this.loginValid);
 
         if(this.loginValid === "true"){
-          //this.setUserData();
+          this.setUserData();
           this.publishLoginEvent();
           this.presentLoading();
         } else {
@@ -76,11 +76,9 @@ export class LoginPage {
         console.log(error);
       }
     )
-
-    console.log("login valid = " + this.loginValid);
    
-  }
-    /*const usuarios = await this.storage.get('usuarios') as any[];
+  }*/
+    const usuarios = await this.storage.get('usuarios') as any[];
     if(usuarios) {
       const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
       if (resultado) {
@@ -94,12 +92,12 @@ export class LoginPage {
       }
     } else {
       this.userToast();
-    }*/
-  //}
+    }
+  }
 
   setUserData(){
     this.userModel.setUserMail(this.inputEmail);
-    this.userModel.setUserName(this.user[0].name);
+    //this.userModel.setUserName(this.user[0].name);
   }
 
   publishLoginEvent(){

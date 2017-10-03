@@ -2,6 +2,12 @@
   "name": "movies",
   "app_id": "",
   "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/users/login",
+      "proxyUrl": "http://moviedbapi-conectguitar.rhcloud.com"
+    }
+  ],
   "integrations": {
     "cordova": {}
   }

@@ -11,3 +11,34 @@ page-favorite-movies {
     background-color: transparent;
 }
 
+.black-background{
+    background-color: black;
+    padding: 0px;
+}
+
+.white-label{
+    color: white;
+}
+
+.card-md {
+    margin: 0px;
+}    
+
+.favorite-item{
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+
+.item, .item-divider {
+    background-color: transparent;
+    border-bottom: 1px solid white;
+}
+
+.favorite-img{
+    position: absolute;
+    left: 0;
+}
+
+.list-md {
+    margin: -1px -6px 2px;
+}
