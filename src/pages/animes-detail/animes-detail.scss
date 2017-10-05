@@ -1,0 +1,21 @@
+page-animes-detail {
+    .anime-label{
+        color: white;
+    }
+
+    ion-item ion-avatar[ident] {
+        position: absolute;
+        bottom: -3px;
+        left: 39%;
+        margin: 0 auto;
+    }    
+
+    .item-md ion-avatar ion-img, .item-md ion-avatar img{
+        width: 70px;
+        height: 70px;
+        background-size: cover;
+        border-radius: 50% !important;
+        border: 2px solid #FFFFFF !important;
+    }
+
+}

@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar color="dark">
+      <ion-grid>
+        <ion-row>
+          <ion-title>Anime</ion-title>
+            <ion-fab middle right edge >
+              <button ion-fab mini (click)="saveFavoriteMovie(movie)" [color]="myBtnColor" [disabled]="disabled">
+                <ion-icon name="star"></ion-icon>
+              </button>
+            </ion-fab>
+        </ion-row>
+      </ion-grid>    
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding class="allbackground">
+    
+    <h2 text-center class="anime-label">{{ anime?.attributes.canonicalTitle }}</h2>
+    <ion-item class="transparent-background"> 
+        <ion-title text-center>
+          <img class="item-background" src="{{ anime?.attributes.coverImage?.original || anime?.attributes.coverImage?.large || anime?.attributes.coverImage?.small || anime?.attributes.posterImage.original || anime?.attributes.posterImage.large || anime?.attributes.posterImage.small }}" style="border: 3px solid white;">
+        </ion-title>  
+        <ion-avatar style="position: absolute;" ident>
+            <ion-img src="{{ anime?.attributes.posterImage.original || anime?.attributes.posterImage.large || anime?.attributes.posterImage.small || anime?.attributes.coverImage.original || anime?.attributes.coverImage.large || anime?.attributes.coverImage.small }}"></ion-img>
+        </ion-avatar>
+    </ion-item>  
+    <ion-grid>
+    <ion-row>
+        <ion-col>
+          <div text-center style="color: white" class="transparent-background">
+            {{ anime?.attributes.synopsis }}
+          </div>
+        </ion-col>
+      </ion-row> 
+      <ion-row>
+        <ion-col> 
+          <ion-item class="transparent-background">
+            <ion-label color="light">Data Início: {{ anime?.attributes.startDate }}</ion-label>
+            <ion-icon name="ios-calendar-outline" color="light" item-left primary></ion-icon>
+          </ion-item>  
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col> 
+          <ion-item class="transparent-background">
+            <ion-fab middle left edge class="transparent-background">
+              <button ion-fab mini (click)="openTrailer()" class="transparent-background">
+                <ion-icon name="logo-youtube"></ion-icon>
+              </button>
+            </ion-fab>
+          </ion-item>  
+        </ion-col>
+      </ion-row>
+    </ion-grid> 
+  </ion-content>
+  

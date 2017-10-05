@@ -31,12 +31,7 @@ export class MoviesPage {
 
   ionViewDidLoad() {
     var parametro = this.navParams.get('param1');
-
-    if(parametro === "latest"){
-      
-    } else {
-      this.getMoviesByGenre();
-    } 
+    this.getMoviesByGenre(); 
   }
 
   onSelect(movies): void {

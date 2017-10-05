@@ -5,7 +5,9 @@ import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { UserModel } from '../../models/user-model/user.model';
 import { LoginProvider } from '../../providers/login/login';
-
+import { AnimeProvider } from '../../providers/anime/anime';
+import { MoviesProvider } from '../../providers/movies/movies';
+import 'rxjs/add/operator/toPromise';
 /**
  * Generated class for the LoginPage page.
  *
@@ -17,8 +19,11 @@ import { LoginProvider } from '../../providers/login/login';
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
+  //providers: [AnimeProvider],
+  
 })
 export class LoginPage {
+  
   public email: string;
   public password: string;
   inputEmail: string;
@@ -27,6 +32,7 @@ export class LoginPage {
   type= "password";
   show = false;
   loginValid: string;
+  animes:any;
 
   constructor(
     public navCtrl: NavController, 
@@ -36,8 +42,13 @@ export class LoginPage {
     private userModel: UserModel,
     public events: Events,
     public loadingCtrl: LoadingController,
-    private loginProvider: LoginProvider
+    private loginProvider: LoginProvider,
+    private animeProvider: AnimeProvider,
+    private moviesProvider: MoviesProvider
   ) {
+    this.animes = [];
+    /*animeProvider.registerUser();
+    console.log(animeProvider.registerUser());*/
   }
 
   goToRegisterPage() {
@@ -58,6 +69,30 @@ export class LoginPage {
     /*console.log("login print");
     console.log(this.loginProvider.loginValidate());*/
 
+    /*this.moviesProvider.getAnim().subscribe(
+      .do((response) => console.log(response.json()))
+      .map((response) => response.json())
+      .map((response) => response.results);*/
+      
+    /*await this.moviesProvider.getAnim().subscribe(
+      (data) => {
+        console.log("data print");
+        console.log(data.json());*/
+        //this.loginValid = data.json().resp;
+        //console.log("login valid = " + this.loginValid);
+
+        /*if(this.loginValid === "true"){
+          this.setUserData();
+          this.publishLoginEvent();
+          this.presentLoading();
+        } else {
+          this.userToast();
+        }*/
+      /*}, error => {
+        console.log(error);
+      }
+    )*/
+
     /*this.loginProvider.loginValidate(this.inputEmail, this.inputPassword).subscribe(
       (data) => {
         console.log("data print");
@@ -75,9 +110,24 @@ export class LoginPage {
       }, error => {
         console.log(error);
       }
-    )
+    )*/
    
-  }*/
+  //}
+
+  //console.log("register user");
+  //console.log(this.animeProvider.getTest().then(obs => obs.subscribe(dado=> console.log(dado))));
+  /*var teste = await this.moviesProvider.getAnim()
+  .do((response) => console.log(response.json()))
+  .map((response) => response.json())
+  .map((response) => response.results);*/
+
+  
+   
+
+  /*this.animeProvider.registerUser()
+  .then((response) => console.log(response.json()))
+  .catch((erro) => console.log(erro.json()));*/
+
     const usuarios = await this.storage.get('usuarios') as any[];
     if(usuarios) {
       const resultado = usuarios.some((usuario) => usuario.email == this.inputEmail && usuario.password == this.inputPassword);
@@ -130,6 +180,10 @@ export class LoginPage {
     });
     loader.present();
     this.goToHomePage();
+  }
+
+  openAnime(animeId){
+    this.navCtrl.push('AnimeDetail', {animeId:animeId});
   }
 
 }

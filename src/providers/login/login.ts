@@ -26,31 +26,6 @@ export class LoginProvider {
       "users/login/" + useremail + "/" + userPassword);
   };*/
 
-  loginValidate(useremail, userPassword){
-    /*let body = JSON.stringify({
-      userEmail: "lukas_boo@hotmail.com",
-      userPassword: "QL0AFWMIX8NRZTKeof9cXsvbvu8=" });*/
-
-    let body = JSON.stringify({
-      userEmail: useremail,
-      userPassword: userPassword });  
-
-
-    let headers = new Headers({ 
-      'Content-Type': 'application/json', 
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods' : 'POST, GET, OPTIONS, PUT' });
-  
-    const options = new RequestOptions({
-      method: RequestMethod.Post,
-      headers: this.headers
-    });
-    //console.log("login provider response");
-    //console.log(this.http.post(this.baseApiPath, body, options));
-    return this.http.post(this.baseApiPath + "/users/login", body, options)
-  };
-
-  
   registerUser(useremail, userPassword){
     /*let body = JSON.stringify({
       userEmail: "lukas_boo@hotmail.com",

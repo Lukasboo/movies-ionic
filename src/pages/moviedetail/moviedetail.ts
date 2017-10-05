@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { UserModel } from '../../models/user-model/user.model';
 import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 
+
 /**
  * Generated class for the MoviedetailPage page.
  *

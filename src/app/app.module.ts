@@ -22,6 +22,11 @@ import { YoutubeVideoPlayer } from '@ionic-native/youtube-video-player';
 import { SeriesProvider } from '../providers/series/series';
 import { SeriesPage } from '../pages/series/series';
 import { SeriesDetailPage } from '../pages/series-detail/series-detail';
+import { AnimeProvider } from '../providers/anime/anime';
+import { AuthHttpProvider } from '../providers/anime/auth-http';
+import { AnimesPage } from '../pages/animes/animes';
+import { AnimesDetailPage } from '../pages/animes-detail/animes-detail';
+import { GenresPage } from '../pages/genres/genres';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,10 @@ import { SeriesDetailPage } from '../pages/series-detail/series-detail';
     MoviesTopRatedPage,
     MoviesUpcomingPage,
     SeriesPage,
-    SeriesDetailPage
+    SeriesDetailPage,
+    AnimesPage,
+    AnimesDetailPage,
+    GenresPage
   ],
   imports: [
     BrowserModule,
@@ -57,7 +65,10 @@ import { SeriesDetailPage } from '../pages/series-detail/series-detail';
     MoviesTopRatedPage,
     MoviesUpcomingPage,
     SeriesPage,
-    SeriesDetailPage
+    SeriesDetailPage,
+    AnimesPage,
+    AnimesDetailPage,
+    GenresPage
   ],
   providers: [
     StatusBar,
@@ -67,7 +78,9 @@ import { SeriesDetailPage } from '../pages/series-detail/series-detail';
     UserModel,
     LoginProvider,
     YoutubeVideoPlayer,
-    SeriesProvider
+    SeriesProvider,
+    AnimeProvider,
+    AuthHttpProvider
   ]
 })
 export class AppModule {}

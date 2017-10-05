@@ -46,4 +46,8 @@ export class MoviesProvider {
     return this.http.get(this.baseApiPath + "/movie/" + movieid + "/videos?api_key=60471ecf5f288a61c69c6592c9d9e1cf&language=pt-BR");
   }
 
+  /*getAnim(){
+    return this.http.get("http://localhost:3000/ani");
+  }*/
+
 }
