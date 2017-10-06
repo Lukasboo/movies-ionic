@@ -8,10 +8,6 @@ page-moviedetail {
         background-size: cover;
     }*/
     
-    .transparent-background{
-        background-color: transparent;
-    }
-    
     .detail-color{
         color: white;
     }
@@ -23,7 +19,7 @@ page-moviedetail {
         margin: 0 auto;
     }    
     
-    .item-md ion-avatar ion-img, .item-md ion-avatar img{
+    .item ion-avatar ion-img, .item ion-avatar img{
         width: 70px;
         height: 70px;
         background-size: cover;

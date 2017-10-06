@@ -3,9 +3,10 @@
     <ion-toolbar style="border-bottom: 2px solid white;">
       <ion-item class="transparent-background"> 
         <ion-avatar>
-          <img src="../assets/avatar/marty.jpg" style="border: 2px solid white;">
+          <!--<img src="../assets/avatar/marty.jpg" style="border: 2px solid white;">-->
+          <img src="assets/avatar/marty.jpg" style="border: 2px solid white;">
         </ion-avatar>  
-        <ion-title text-left margin-top="10px">
+        <ion-title text-left>
             <h2 class="menuheadername">{{ userName }}</h2>
           </ion-title>
           <ion-title text-left class="transparent-background">
@@ -27,6 +28,18 @@
           </ion-item>  
     </ion-list>
   </ion-content>
+  <!--<ion-list>
+    <button ion-item (click)="openTabPage(page)">teste</button>
+    <ion-tabs style="background-color: transparent">
+      <ion-tab [root]="tab3Root" tabTitle="Tab 3" tabIcon="cog"></ion-tab>
+      <ion-tab [root]="tab2Root" tabTitle="Tab 2" tabIcon="chatbubbles"></ion-tab>
+      <ion-tab [root]="tab1Root" tabTitle="Tab 1" tabIcon="pulse"></ion-tab>
+    </ion-tabs>
+
+    <!--<button ion-item *ngFor="let page of pagesTab" (click)="openTabPage(page)">
+      {{page.title}}
+    </button>-->
+  <!--</ion-list>-->
 </ion-menu>
 
 <!-- Disable swipe-to-go-back because it's poor UX to combine STGB with side menus -->

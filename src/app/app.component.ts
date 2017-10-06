@@ -11,6 +11,9 @@ import { MoviesTopRatedPage } from '../pages/movies-top-rated/movies-top-rated';
 import { MoviesUpcomingPage } from '../pages/movies-upcoming/movies-upcoming';
 import { SeriesPage } from '../pages/series/series';
 import { AnimesPage } from '../pages/animes/animes';
+import { GenresPage } from '../pages/genres/genres';
+import { SettingsPage } from '../pages/settings/settings';
+import { AccountPage } from '../pages/account/account';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,6 +22,7 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage:any = LoginPage;
   pages: Array<{title: string, component: any, icon: string}>;
+  pagesTab: Array<{title: string, component: any}>;
   userName: string;
   userEmail: string;
 
@@ -39,7 +43,8 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Gêneros', component: HomePage, icon: "ios-browsers-outline" },
+      { title: 'Home', component: HomePage, icon: "ios-home-outline" },
+      { title: 'Gêneros', component: GenresPage, icon: "ios-browsers-outline" },
       { title: 'Últimos Adicionados', component: LatestMoviesPage, icon: "ios-calendar-outline" },
       { title: 'Mais Votados', component: MoviesTopRatedPage, icon: "ios-thumbs-up-outline" },
       { title: 'Estréia', component: MoviesUpcomingPage, icon: "ios-videocam-outline" },
@@ -48,6 +53,13 @@ export class MyApp {
       { title: 'Animes', component: AnimesPage, icon: "ios-flash-outline" },
       { title: 'Sair', component: LoginPage, icon: "ios-log-out-outline" }
     ];
+
+    this.pagesTab = [
+      { title: 'Home', component: HomePage },
+      { title: 'Series', component: SeriesPage },
+      { title: 'Animes', component: AnimesPage }
+    ];
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -69,6 +81,12 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
+  }
+
+  openTabPage(pagetab) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(pagetab.component);
   }
 
 }

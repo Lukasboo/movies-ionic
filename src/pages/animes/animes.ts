@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AnimeProvider } from '../../providers/anime/anime';
 import { Observable } from 'rxjs/Observable';
 import { AnimesDetailPage } from '../animes-detail/animes-detail';
@@ -24,16 +24,44 @@ export class AnimesPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private animeProvider: AnimeProvider
+    private animeProvider: AnimeProvider,
+    public loading: LoadingController,
+    public alertCtrl: AlertController
     ) {
   }
 
-  ionViewDidLoad() {
-    this.getAnimes();
-    console.log(this.animes_list);
+  async ionViewDidLoad() {
+
+    let loader = this.loading.create({
+      content: 'Loading data...',
+    });
+
+    loader.present().then(() => {
+      this.getAnimes();
+      loader.dismiss();
+    });
+
+    try {
+      await loader.present();
+      const response  = await this.getAnimes();
+      var count = Object.keys(response.json().data).length;
+      for(let i=0; i<count; i++){    
+        this.animes_list.push(response.json().data[i]);
+      }
+    }
+    catch(e) {
+      console.error(e);
+      this.presentAlert();
+    }
+    finally{
+      loader.dismiss();
+    }
+
+    //this.getAnimes();
+    
   }
 
-  async getAnimes() {
+  /*async getAnimes() {
     await this.animeProvider.getAnimes().subscribe(
       (data) => {
         var count = Object.keys(data.json().data).length;
@@ -45,12 +73,24 @@ export class AnimesPage {
       }
     )
     console.log(this.animes_list);
-  }
+  }*/
+  getAnimes() {
+    return this.animeProvider.getAnimes().toPromise(); 
+  }  
 
   onSelect(anime): void {
     this.navCtrl.push(AnimesDetailPage, {
       param1: anime.id
     });
+  }
+
+  presentAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Erro',
+      subTitle: 'Ocorreu algum erro, verifique sua conexão e tente novamente!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }

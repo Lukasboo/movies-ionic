@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
@@ -27,6 +28,9 @@ import { AuthHttpProvider } from '../providers/anime/auth-http';
 import { AnimesPage } from '../pages/animes/animes';
 import { AnimesDetailPage } from '../pages/animes-detail/animes-detail';
 import { GenresPage } from '../pages/genres/genres';
+import { SettingsPage } from '../pages/settings/settings';
+import { AccountPage } from '../pages/account/account';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
   declarations: [
@@ -44,11 +48,14 @@ import { GenresPage } from '../pages/genres/genres';
     SeriesDetailPage,
     AnimesPage,
     AnimesDetailPage,
-    GenresPage
+    GenresPage,
+    SettingsPage,
+    AccountPage
   ],
   imports: [
     BrowserModule,
     HttpModule,
+    NgxQRCodeModule,
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot()
   ],
@@ -68,7 +75,9 @@ import { GenresPage } from '../pages/genres/genres';
     SeriesDetailPage,
     AnimesPage,
     AnimesDetailPage,
-    GenresPage
+    GenresPage,
+    SettingsPage,
+    AccountPage
   ],
   providers: [
     StatusBar,
@@ -80,7 +89,8 @@ import { GenresPage } from '../pages/genres/genres';
     YoutubeVideoPlayer,
     SeriesProvider,
     AnimeProvider,
-    AuthHttpProvider
+    AuthHttpProvider,
+    BarcodeScanner
   ]
 })
 export class AppModule {}

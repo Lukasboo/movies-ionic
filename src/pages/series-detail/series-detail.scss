@@ -1,4 +1,5 @@
 page-series-detail {
+
     ion-item ion-avatar[ident] {
         position: absolute;
         bottom: -3px;
@@ -6,7 +7,7 @@ page-series-detail {
         margin: 0 auto;
     }    
 
-    .item-md ion-avatar ion-img, .item-md ion-avatar img{
+    .item ion-avatar ion-img, .item ion-avatar img{
         width: 70px;
         height: 70px;
         background-size: cover;

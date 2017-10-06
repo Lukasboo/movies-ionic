@@ -1,5 +1,5 @@
 import { Component, ChangeDetectorRef } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, AlertController } from 'ionic-angular';
 import { SeriesProvider } from '../../providers/series/series';
 import { UserModel } from '../../models/user-model/user.model';
 import { Storage } from '@ionic/storage';
@@ -34,23 +34,44 @@ export class SeriesDetailPage {
     private changeDetectorRef: ChangeDetectorRef,
     private userModel: UserModel,
     private storage: Storage,
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    public loading: LoadingController,
+    public alertCtrl: AlertController
   ) {
   }
 
-  ionViewDidLoad() {
-    this.getParameter();
-    this.getSeriesById();
+  async ionViewDidLoad() {
+
+    this.parameter1 = this.navParams.get('param1'); 
+
+    let loader = this.loading.create({
+      content: 'Loading data...',
+    });
+
+    try{
+      await loader.present();
+      const response = await this.getSeriesById();
+      this.serie = response.json();
+      console.log(response.json());
+    } catch(e){
+      console.log(e);
+      this.presentAlert();
+    } finally {
+      loader.dismiss();
+    }
+
+    
+    //this.getSeriesById();
     this.userEmail = this.userModel.getUserMail();
     
     console.log('ionViewDidLoad SeriesDetailPage');
   }
 
-  getParameter(){
-    this.parameter1 = this.navParams.get('param1'); 
+  getSeriesById(){
+    return this.seriesProvider.getSeriesById(this.parameter1).toPromise();
   }
 
-  getSeriesById(){
+  /*getSeriesById(){
     this.seriesProvider.getSeriesById(this.parameter1).subscribe(
       (data) => {
         this.serie = data.json();
@@ -59,7 +80,7 @@ export class SeriesDetailPage {
         console.log("Erro detail");
       }
     )
-  }
+  }*/
 
   async saveFavoriteMovie(serie){
     this.myBtnColor = "danger";
@@ -141,6 +162,15 @@ export class SeriesDetailPage {
       position: 'top'
     });
     toast.present();
+  }
+
+  presentAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Erro',
+      subTitle: 'Ocorreu algum erro, verifique sua conexão e tente novamente!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }

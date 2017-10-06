@@ -19,7 +19,7 @@ page-favorite-movies {
         padding-left: 10px;
     }
 
-    .card-md {
+    .card {
         margin: 0px;
     }    
 
@@ -49,7 +49,7 @@ page-favorite-movies {
         margin: -1px -6px 2px;
     }*/
 
-    .item-md {
+    .item {
         padding: 0px;
         background-color: transparent;
     }
@@ -58,25 +58,36 @@ page-favorite-movies {
         padding: 0px;
     }
 
-    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+    .item ion-thumbnail ion-img, .item ion-thumbnail img {
         width: 80px;
         height: 100px;
     }
 
-    .item-md.item-block .item-inner {
+    .item.item-block .item-inner {
         background-color: #1c1c1e;
         border-bottom: 1px solid #141416;
     }
 
-    .item-md ion-avatar[item-left], .item-md ion-thumbnail[item-left], .item-md ion-avatar[item-start], .item-md ion-thumbnail[item-start] {
+    /*.item-md ion-avatar[item-left], .item-md ion-thumbnail[item-left], .item-md ion-avatar[item-start], .item-md ion-thumbnail[item-start] {
+        margin: 12px -1px 8px 0px;
+    }*/
+
+    .item ion-avatar[item-left], .item ion-thumbnail[item-left], .item ion-avatar[item-start], .item ion-thumbnail[item-start] {
         margin: 12px -1px 8px 0px;
     }
     
-    .list-md {
-        
+    .list {
         margin: -11px 2px 10px;
         border-bottom: 2px solid #141416;
     }
 
+    .list-ios > .item-block:first-child {
+        //border-top: 1px solid #141416; 
+        border-top: none; 
+    }
+
+    .list-ios > .item-block:last-child, .list-ios > .item-wrapper:last-child .item-block {
+        border: 1px solid #141416;
+    }
 
 }

@@ -50,6 +50,22 @@
         <button ion-button color="light" round outline (click)="login()" [disabled]="f.invalid">Entrar</button>
         <ion-label color="light" text-center margin-top="20px"><strong>Não tem conta?</strong></ion-label>
         <button ion-button color="light" round outline (click)="goToRegisterPage()">Registrar</button>
+
+        
+        <!--<button ion-button full icon-left (click)="createCode()"><ion-icon name="barcode"></ion-icon>Create Code</button>
+        <button ion-button full icon-left (click)="scanCode()" color="secondary"><ion-icon name="qr-scanner"></ion-icon>Scan Code</button>
+        <ion-card *ngIf="createdCode">
+            <ngx-qrcode [qrc-value]="createdCode"></ngx-qrcode>
+            <ion-card-content>
+              <p>Value: {{ createdCode }}</p>
+            </ion-card-content>
+          </ion-card>
+         
+          <ion-card *ngIf="scannedCode">
+            <ion-card-content>
+              Result from Scan: {{ scannedCode }}
+            </ion-card-content>
+          </ion-card>-->
       </ion-grid>
   </form>
 </ion-content>

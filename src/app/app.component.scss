@@ -51,11 +51,11 @@ ion-menu .header {
     //background-position: -4px 189px;
 }
 
-.toolbar-background-md{
+.toolbar-background{
     background-color: transparent;
 }
 
-.item-md.item-block .item-inner{
+.item.item-block .item-inner{
     border-bottom: none;
 }
 
@@ -65,7 +65,14 @@ ion-menu .header {
     //-webkit-text-stroke: 1px darkslategray;
 }
 
-.toolbar-md {
+.toolbar {
     border-bottom: 3px solid black;
 }
 
+.list-ios > .item-block:first-child {
+    border-top: none;
+}
+
+.list-ios {
+    margin: -1px 0 18px;
+}

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { AnimeProvider } from '../../providers/anime/anime';
-
+import 'rxjs/add/operator/toPromise';
 /**
  * Generated class for the AnimesDetailPage page.
  *
@@ -23,31 +23,55 @@ export class AnimesDetailPage {
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    private animeProvider: AnimeProvider
+    private animeProvider: AnimeProvider,
+    public loading: LoadingController,
+    public alertCtrl: AlertController
   ) {
   }
 
-  ionViewDidLoad() {
+  async ionViewDidLoad() {
+
     this.parameter1 = this.navParams.get('param1');
+    
+    let loader = this.loading.create({
+      content: 'Loading data...',
+    });
+    
+    try {
+      await loader.present();
+      const response  = await this.getAnimesById();
+      this.anime = response.json().data;
+    }
+    catch(e) {
+      console.error(e);
+      this.presentAlert();
+    }
+    finally{
+      loader.dismiss();
+    }
+
+
+    /*this.parameter1 = this.navParams.get('param1');
     console.log('ionViewDidLoad AnimesDetailPage');
     this.getAnimesById();
-    console.log(this.anime);
+    console.log(this.anime);*/
   }
 
   getParameter(){
     this.parameter1 = this.navParams.get('param1'); 
   }
 
-  async getAnimesById(){
-    await this.animeProvider.getAnimeById(this.parameter1).subscribe(
-      (data) => {
-        this.anime = data.json().data;
-        //console.log(this.anime);
-        //this.changeFabColor(this.movie);
-      }, error => {
-        console.log("Erro detail");
-      }
-    )
+  getAnimesById(){
+    return this.animeProvider.getAnimeById(this.parameter1).toPromise(); 
+  }
+
+  presentAlert() {
+    const alert = this.alertCtrl.create({
+      title: 'Erro',
+      subTitle: 'Ocorreu algum erro, verifique sua conexão e tente novamente!',
+      buttons: ['Dismiss']
+    });
+    alert.present();
   }
 
 }

@@ -8,12 +8,7 @@ import { LoginProvider } from '../../providers/login/login';
 import { AnimeProvider } from '../../providers/anime/anime';
 import { MoviesProvider } from '../../providers/movies/movies';
 import 'rxjs/add/operator/toPromise';
-/**
- * Generated class for the LoginPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 
 @IonicPage()
 @Component({
@@ -33,6 +28,9 @@ export class LoginPage {
   show = false;
   loginValid: string;
   animes:any;
+  qrData = null;
+  createdCode = null;
+  scannedCode = null;
 
   constructor(
     public navCtrl: NavController, 
@@ -44,7 +42,8 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     private loginProvider: LoginProvider,
     private animeProvider: AnimeProvider,
-    private moviesProvider: MoviesProvider
+    private moviesProvider: MoviesProvider,
+    private barcodeScanner: BarcodeScanner
   ) {
     this.animes = [];
     /*animeProvider.registerUser();
@@ -135,8 +134,8 @@ export class LoginPage {
         this.user = await usuarios.filter((movie) => movie.email == this.inputEmail);
         this.setUserData();
         this.publishLoginEvent();
-        this.presentLoading();
-        //this.goToHomePage();
+        //this.presentLoading();
+        this.goToHomePage();
       } else {
         this.userToast();
       }
@@ -186,4 +185,16 @@ export class LoginPage {
     this.navCtrl.push('AnimeDetail', {animeId:animeId});
   }
 
+  createCode() {
+    this.createdCode = this.qrData;
+  }
+ 
+  scanCode() {
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.scannedCode = barcodeData.text;
+      console.log(this.scannedCode);
+    }, (err) => {
+        console.log('Error: ', err);
+    });
+  }
 }

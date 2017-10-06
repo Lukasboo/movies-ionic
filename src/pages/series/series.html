@@ -16,7 +16,7 @@
 <ion-content padding class="allbackground">
   <ion-grid>
     <ion-row>
-      <ion-col col-6 *ngFor="let series of series_list | async; let i = index" (click)="onSelect(series)" class="transparent-background" >
+      <ion-col col-6 *ngFor="let series of series_list" (click)="onSelect(series)" class="transparent-background" >
         <img class="item-background" src="https://image.tmdb.org/t/p/w500{{ series.poster_path }}" style="box-shadow: 4px 4px;">
       </ion-col>
     </ion-row>    

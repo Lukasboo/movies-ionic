@@ -11,10 +11,6 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class AuthHttpProvider {
 
-  /*constructor(public http: Http) {
-    console.log('Hello AuthHttpProvider Provider');
-  }*/
-
   aniListEndpoint:string;
   constructor(public http: Http) {
     this.aniListEndpoint = 'https://anilist.co/api/auth/access_token';

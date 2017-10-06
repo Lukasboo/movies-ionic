@@ -3,47 +3,87 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title style="text-shadow: 3px 4px black;">Gêneros</ion-title>
+    <ion-title style="text-shadow: 3px 4px black;">Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="allbackground">
-  <!--<ion-card-header text-center style="border-bottom: 2px solid #141416;">
-    <h1 style="color: #ffffff">Escolha o tipo de filme!</h1>
-  </ion-card-header>-->
+
   
-  <!--<ion-item class="transparent-background">
-    <ion-label class="transparent-background">Gender</ion-label>
-    <ion-select [(ngModel)]="gender" color="#000000" class="transparent-background">
-      <ion-option value="top_rated">Mais votados</ion-option>
-      <ion-option value="upcoming_movies">Em Breve</ion-option>
-      <ion-option value="now_playing">Cinema atualmente</ion-option>
-      <ion-option value="popular">Populares</ion-option>
-    </ion-select>
-  </ion-item>-->
 
-  <!--<ion-card *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
-      <button ion-button color="light" block outline no-lines>
-        <!--<ion-icon name="arrow-forward" item-left></ion-icon>-->
-        <!--{{ movies.name }}
-      </button>
-  </ion-card>-->
+    <ion-card (click)="goToGenresPage()">
+      <!--<img src="https://typeset-beta.imgix.net/rehost%2F2016%2F9%2F13%2F673602e0-8ba8-4000-970a-a343aa661d18.jpg"/>-->
+      <img src="http://nerdbastards.com/wp-content/uploads/2013/04/justiceleague-doomed.jpg">
+      <ion-label class="card-title">Gêneros</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
 
-  <!--<ion-list *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="transparent-background" no-lines>
-    <ion-item class="transparent-background" item-right>
-      <ion-label style="color: #ffffff">{{ movies.name }}
-          <ion-icon item-end name="ios-arrow-forward-outline"></ion-icon>
-      </ion-label>
-    </ion-item>
-  </ion-list>-->
+    <ion-card (click)="goToLatestPage()">
+      <img src="http://portaldecinema.com.br/news/wp-content/uploads/2013/07/O-%C3%9Altimo-Samurai.jpg"/>
+      <ion-label class="card-title">Últimos Adicionados</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
 
-  <ion-grid>
-    <ion-row class="home-button">
-        <button ion-item color="light" *ngFor="let movies of movies_list" (click)="onSelect(movies)" class="home-button" no-lines>
-            {{ movies.name }}
-            <ion-icon item-end name="ios-arrow-forward-outline" color="light"></ion-icon>
-        </button>
-    </ion-row>  
-  </ion-grid>
+    <ion-card (click)="goToTopRatedPage()">
+      <img src="http://recantoadormecido.com.br/wp-content/uploads/2014/09/O-Candidato-Honesto-Official-Poster-Banner-PROMO-13AGOSTO2014.jpg"/>
+      <ion-label class="card-title">Mais Votados</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
 
+    <ion-card (click)="goUpcomingPage()">
+      <img src="https://img.cinemablend.com/quill/e/4/9/8/7/7/e4987751f9b900b2988cefcc196417bd6fab8468.jpg"/>
+      <ion-label class="card-title">Estréias</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
+
+    <ion-card (click)="goFavoritesPage()">
+      <img src="http://blog.pmweb.com.br/wp-content/uploads/Forrest-Gump-running-ftr1.jpg"/>
+      <ion-label class="card-title">Favoritos</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
+
+    <ion-card (click)="goSeriesPage()">
+      <img src="https://cdn.vox-cdn.com/uploads/chorus_image/image/56083301/6c5cb01c5b2725fa0329efeb552a9983429637944034baa3b3309139f0b1675dce58081a7b9e3f72fef469f7cdf34069_2040.0.jpg"/>
+      <ion-label class="card-title">Séries</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
+
+    <ion-card (click)="goAnimesPage()">
+      <img src="https://myanimelist.cdn-dena.com/s/common/uploaded_files/1444014275-106dee95104209bb9436d6df2b6d5145.jpeg"/>
+      <ion-label class="card-title">Animes</ion-label>
+      <!--<div class="card-subtitle"></div>-->
+    </ion-card>
+ 
 </ion-content>
+
+   
+<ion-footer>
+  <ion-toolbar>
+      <ion-segment [(ngModel)]="icons" color="secondary">
+        <ion-segment-button value="home" (click)="goToHomePage()">
+          <ion-icon name="ios-home" color="light"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="goFavoritesPage()" (click)="goFavoritesPage()">
+          <ion-icon name="ios-star" color="light"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="out" (click)="goLogOut()">
+            <ion-icon name="ios-log-out" color="light"></ion-icon>
+          </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  <!--<ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-4>
+          <button ion-button class="transparent-background"><ion-icon name="ios-home"></ion-icon></button>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button class="transparent-background"><ion-icon name="ios-home"></ion-icon></button>
+        </ion-col>
+        <ion-col col-4>
+          <button ion-button class="transparent-background"><ion-icon name="ios-home"></ion-icon></button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>-->
+</ion-footer>
